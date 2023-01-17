@@ -1,60 +1,17 @@
-names = [
-  'Никита',
-  'Алексей',
-  'Дмитрий'
-]
+first_user = User.find_or_create_by(name: 'Никита')
+second_user = User.find_or_create_by(name: 'Алексей')
+third_user = User.find_or_create_by(name: 'Дмитрий')
 
-categories = [
-  {
-    name: 'Языки программирования',
-    tests: [
-      {
-        title: 'Ruby',
-        questions: [
-          {
-            body: 'Когда появился Ruby',
-            answers: [
-              {
-                body: '2021'
-              }
-            ],
-          },
-          {
-            body: 'К какому классу (функциональных, императивных, ООП) языков программирования относится Ruby',
-            answers: [
-              {
-                body: 'ООП'
-              }
-            ],
-          },
-          {
-            body: 'Кто создатель Ruby',
-            answers: [
-              {
-                body: 'Юкихиро Мацумото'
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-]
+created_category = Category.find_or_create_by(name: 'Языки программирования')
 
-names.each do |name|
-  User.find_or_create_by(name: name)
-end
+first_created_test = Test.find_or_create_by(title: 'Ruby', category_id: created_category.id)
+second_created_test = Test.find_or_create_by(title: 'JavaScript', category_id: created_category.id)
 
-categories.each do |category|
-  created_category = Category.find_or_create_by(name: category[:name])
-  category[:tests].each do |test|
-    created_test = Test.find_or_create_by(title: test[:title], category_id: created_category.id)
-    test[:questions].each do |question|
-      created_question = Question.find_or_create_by(body: question[:body], test_id: created_test.id)
-      question[:answers].each do |answer|
-        answered_user = User.first
-        created_answer = Answer.find_or_create_by(body: answer[:body], question_id: created_question.id, user_id: answered_user.id)
-      end
-    end
-  end
-end
+first_question = Question.find_or_create_by(body: 'Когда появился Ruby', test_id: created_test.id)
+second_question = Question.find_or_create_by(body: 'К какому классу (функциональных, императивных, ООП) языков программирования относится Ruby', test_id: created_test.id)
+third_question = Question.find_or_create_by(body: 'Кто создатель Ruby', test_id: created_test.id)
+fourth_question = Question.find_or_create_by(body: 'Что такое замыкание?', test_id: second_created_test.id)
+
+first_answer = Answer.find_or_create_by(body: '2021', question_id: first_question.id, user_id: first_user.id)
+second_answer = Answer.find_or_create_by(body: 'ООП', question_id: second_question.id, user_id: second_user.id)
+third_answer = Answer.find_or_create_by(body: 'Юкихиро Мацумото', question_id: third_user.id, user_id: third_user.id)

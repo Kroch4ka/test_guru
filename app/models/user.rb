@@ -2,6 +2,6 @@ class User < ApplicationRecord
   has_many :answers
 
   def passed_tests(level)
-    answers.map { |answer| answer.question.test.level == level ? answer.question.test : nil }.compact
+    Test.where(level: level).joins(questions: :answers).where(answers: { user_id: id }).uniq
   end
 end
