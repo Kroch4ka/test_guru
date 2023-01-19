@@ -10,17 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_16_161358) do
+ActiveRecord::Schema.define(version: 2023_01_19_144626) do
 
   create_table "answers", force: :cascade do |t|
     t.text "body", null: false
-    t.integer "user_id"
     t.integer "question_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "correct", default: false
     t.index ["question_id"], name: "index_answers_on_question_id"
-    t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "answers_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "answer_id"
+    t.index ["answer_id"], name: "index_answers_users_on_answer_id"
+    t.index ["user_id"], name: "index_answers_users_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -46,6 +51,13 @@ ActiveRecord::Schema.define(version: 2023_01_16_161358) do
     t.index ["category_id"], name: "index_tests_on_category_id"
   end
 
+  create_table "tests_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "test_id"
+    t.index ["test_id"], name: "index_tests_users_on_test_id"
+    t.index ["user_id"], name: "index_tests_users_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "admin", default: false
@@ -54,7 +66,6 @@ ActiveRecord::Schema.define(version: 2023_01_16_161358) do
   end
 
   add_foreign_key "answers", "questions"
-  add_foreign_key "answers", "users"
   add_foreign_key "questions", "tests"
   add_foreign_key "tests", "categories"
 end

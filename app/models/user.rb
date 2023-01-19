@@ -1,7 +1,8 @@
 class User < ApplicationRecord
-  has_many :answers
+  has_and_belongs_to_many :tests
+  has_and_belongs_to_many :answers
 
   def passed_tests(level)
-    Test.where(level: level).joins(questions: :answers).where(answers: { user_id: id }).uniq
+    tests.where(level: level)
   end
 end
