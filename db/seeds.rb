@@ -10,7 +10,7 @@ created_category = Category.find_or_create_by(name: categories.first)
 
 tests = ['Ruby']
 
-first_created_test = Test.find_or_create_by(title: tests.first, category_id: created_category.id)
+first_created_test = Test.find_or_create_by(title: tests.first, category_id: created_category.id, creator_id: first_user.id)
 
 first_test_questions = ['Когда появился Ruby?', 'Кто создатель Ruby?']
 
