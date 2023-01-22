@@ -1,11 +1,8 @@
 class Question < ApplicationRecord
-  ANSWERS_COUNT = 0..4
-
-  private_constant :ANSWERS_COUNT
+  MAX_ANSWERS_COUNT = 4
 
   belongs_to :test
   has_many :answers
 
   validates :body, presence: true
-  validates :answers, length: ANSWERS_COUNT
 end
