@@ -1,8 +1,8 @@
 users = ['Никита', 'Алексей', 'Дмитрий']
 
-first_user = User.find_or_create_by(name: users.first)
-second_user = User.find_or_create_by(name: users.second)
-third_user = User.find_or_create_by(name: users.third)
+first_user = User.find_or_create_by(name: users.first, email: "nikita_example@mail.ru")
+second_user = User.find_or_create_by(name: users.second, email: "alex_example@mail.ru")
+third_user = User.find_or_create_by(name: users.third, email: "dmitry_example@mail.ru")
 
 categories = ['Языки программирования']
 
