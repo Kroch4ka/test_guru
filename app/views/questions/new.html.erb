@@ -1,0 +1,9 @@
+<% flash.each do |key, message| %>
+  <p class="<%= key %>"><%= message %></p>
+<% end %>
+<form method="post" action="<%= test_questions_path(@test) %>">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token, id: :form_token %>
+  <label for="body">Тело вопроса</label>
+  <input type="text" name="question[body]" id="body">
+  <input type="submit">
+</form>
