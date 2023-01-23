@@ -1,4 +1,6 @@
 class Answer < ApplicationRecord
+  MAX_ANSWERS_COUNT = 4
+
   belongs_to :question
   has_and_belongs_to_many :users
 
@@ -10,10 +12,10 @@ class Answer < ApplicationRecord
   private
 
   def check_for_added_to_question
-    errors.add(:overflow_answers, "Test can take #{Question::MAX_ANSWERS_COUNT} answers") unless can_be_added_to_question? 
+    errors.add(:overflow_answers, "Test can take only #{MAX_ANSWERS_COUNT} answers") if can_not_be_added_to_question? 
   end
 
-  def can_be_added_to_question?
-    Question::MAX_ANSWERS_COUNT > question.answers.size
+  def can_not_be_added_to_question?
+    MAX_ANSWERS_COUNT <= question.answers.size
   end
 end
