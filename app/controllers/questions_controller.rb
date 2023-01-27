@@ -4,10 +4,6 @@ class QuestionsController < ApplicationController
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-  def index
-    @questions = @test.questions
-  end
-
   def new
     @question = @test.questions.build
   end
@@ -26,7 +22,7 @@ class QuestionsController < ApplicationController
     if question.save
       redirect_to @test
     else
-      redirect_to new_test_question_path(@test), :alert => "Упс, вопрос не был создан!"
+      redirect_to new_test_question_path(@test), :alert => 'Упс, вопрос не был создан!'
     end
   end
 
@@ -49,6 +45,6 @@ class QuestionsController < ApplicationController
   end
 
   def record_not_found
-    render plain: "404 Не найдено!", status: 404
+    render plain: '404 Не найдено!', status: 404
   end
 end

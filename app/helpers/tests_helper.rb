@@ -1,5 +1,4 @@
 module TestsHelper
-
   def levelize(level)
     case level
     when Test::EASY_LEVELS then 'Лёгкий'
