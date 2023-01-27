@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :get_test, only: %i[index create new]
-  before_action :get_question, only: %i[edit, show, update, destroy]
+  before_action :get_test, only: %i(index create new)
+  before_action :get_question, only: %i(edit show update destroy)
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
@@ -8,24 +8,30 @@ class QuestionsController < ApplicationController
     @questions = @test.questions
   end
 
-  def show
-    @question = Question.find(params[:id])
+  def new
+    @question = @test.questions.build
+  end
+
+  def update
+    if @question.update(question_params)
+      redirect_to @question.test
+    else
+      redirect_to :edit
+    end
   end
 
   def create
     question = @test.questions.build(question_params)
 
     if question.save
-      render :inline => "<h1>Вопрос был успешно создан!</h1>"
+      redirect_to @test
     else
       redirect_to new_test_question_path(@test), :alert => "Упс, вопрос не был создан!"
     end
   end
 
   def destroy
-    if @question.destroy
-      render :inline => "<h1>Вопрос был успешно удалён</h1>"
-    end
+    redirect_to @question.test if @question.destroy
   end
 
   private

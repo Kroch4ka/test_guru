@@ -1,0 +1,39 @@
+body, * > *, * {
+  font-family: var(--font);
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.container {
+  height: 100%;
+}
+
+.container__wrapper {
+  min-height: 100%;
+}
+
+.link {
+  color: var(--link-color);
+  font-weight: 600;
+  text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+  transition: text-decoration-color 400ms;
+}
+
+.form {
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+}

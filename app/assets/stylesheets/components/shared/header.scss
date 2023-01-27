@@ -1,0 +1,9 @@
+.header {
+  background-color: var(--accent-color);
+  padding: 15px var(--padding-left-right);
+
+  &__page {
+    color: whitesmoke;
+    font-weight: 600;
+  }
+}

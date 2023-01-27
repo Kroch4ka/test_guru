@@ -4,7 +4,7 @@ class Test < ApplicationRecord
   HARD_LEVELS = 5..Float::INFINITY
 
   belongs_to :category
-  has_many :questions
+  has_many :questions, :dependent => :delete_all
   has_and_belongs_to_many :users
   belongs_to :creator, foreign_key: :creator_id, class_name: :User
 
