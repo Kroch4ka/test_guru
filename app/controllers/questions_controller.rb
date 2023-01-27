@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :get_test, only: %i(index create new)
-  before_action :get_question, only: %i(edit show update destroy)
+  before_action :get_test, only: %i[index create new]
+  before_action :get_question, only: %i[edit show update destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
     if question.save
       redirect_to @test
     else
-      redirect_to new_test_question_path(@test), :alert => 'Упс, вопрос не был создан!'
+      redirect_to new_test_question_path(@test), alert: 'Упс, вопрос не был создан!'
     end
   end
 
@@ -45,6 +45,6 @@ class QuestionsController < ApplicationController
   end
 
   def record_not_found
-    render plain: '404 Не найдено!', status: 404
+    render plain: '404 Не найдено!', status: :not_found
   end
 end

@@ -12,7 +12,7 @@ class Answer < ApplicationRecord
   private
 
   def check_for_added_to_question
-    errors.add(:overflow_answers, "Test can take only #{MAX_ANSWERS_COUNT} answers") if can_not_be_added_to_question? 
+    errors.add(:overflow_answers, "Test can take only #{MAX_ANSWERS_COUNT} answers") if can_not_be_added_to_question?
   end
 
   def can_not_be_added_to_question?
