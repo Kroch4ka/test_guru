@@ -6,7 +6,7 @@ class Test < ApplicationRecord
   belongs_to :category
   has_many :questions, dependent: :destroy
   has_and_belongs_to_many :users
-  belongs_to :creator, class_name: :User
+  belongs_to :creator, foreign_key: :creator_id, class_name: :User
 
   validates :title, presence: true, uniqueness: { scope: :level }
   validates :level, numericality: { only_integer: true }
