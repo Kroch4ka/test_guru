@@ -1,0 +1,6 @@
+<h1><%= question_form_heading(@question) %></h1>
+<%= form_with model: [test, question], class: 'form' do |form| %>
+  <%= form.label :body %>
+  <%= form.text_field :body %>
+  <%= form.submit %>
+<% end %>

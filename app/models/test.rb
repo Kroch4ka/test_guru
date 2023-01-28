@@ -4,7 +4,7 @@ class Test < ApplicationRecord
   HARD_LEVELS = 5..Float::INFINITY
 
   belongs_to :category
-  has_many :questions
+  has_many :questions, dependent: :destroy
   has_and_belongs_to_many :users
   belongs_to :creator, foreign_key: :creator_id, class_name: :User
 
@@ -14,7 +14,9 @@ class Test < ApplicationRecord
   scope :easy, -> { where(level: EASY_LEVELS) }
   scope :medium, -> { where(level: MEDIUM_LEVELS) }
   scope :hard, -> { where(level: HARD_LEVELS) }
-  scope :with_categories_by_name, ->(category_name) { joins(:category).where("categories.name LIKE ?", "%#{category_name}%") }
+  scope :with_categories_by_name, lambda { |category_name|
+                                    joins(:category).where('categories.name LIKE ?', "%#{category_name}%")
+                                  }
 
   def self.category_titles(category_name)
     with_categories_by_name(category_name).order(title: :desc).pluck(:title)

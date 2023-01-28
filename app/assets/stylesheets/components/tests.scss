@@ -1,0 +1,39 @@
+.container__wrapper {
+  display: flex;
+  justify-content: center;
+  .tests {
+    display: flex;
+    flex-flow: row;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    gap: 15px;
+    .test_card {
+      display: flex;
+      gap: 10px;
+      flex-flow: column;
+      position: relative;
+      padding: 30px;
+      background-color: var(--accent-color);
+      color: white;
+      &__link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.test {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 500px;
+  font-weight: bold;
+}

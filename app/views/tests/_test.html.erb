@@ -1,0 +1,6 @@
+<li class="test_card">
+  <h2 class="test_card__title"><%= test.title %></h2>
+  <span class="test_card__level">Уровень: <%= levelize(test.level) %></span>
+  <span class="test_card__count_questions">Количество вопросов: <%= test.questions.count %></span>
+  <%= link_to 'Ссылка на тест', test_url(test), class: "test_card__link" %>
+</li>
