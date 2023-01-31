@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :tests do
     post :start, on: :member
-    resources :questions, shallow: true
+    resources :questions, except: %i[index show], shallow: true
   end
 
   resources :test_passages, only: %i[show] do
