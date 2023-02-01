@@ -1,16 +1,17 @@
 class TestsController < ApplicationController
   before_action :set_user, only: %i[start]
+  before_action :set_test, only: %i[start show]
 
   def index
     @tests = Test.all
   end
 
   def show
-    @questions = Test.find(params[:id]).questions
+    @questions = @test.questions
   end
   
   def start
-    test_passage = TestPassage.create(user_id: @user.id, test_id: params[:id])
+    test_passage = TestPassage.create(test_id: @test.id, user_id: @user.id)
 
     redirect_to test_passage_url(test_passage)
   end
@@ -25,5 +26,9 @@ class TestsController < ApplicationController
 
   def set_user
     @user = User.all.order(id: :asc).first
+  end
+
+  def set_test
+    @test = Test.find(params[:id])
   end
 end

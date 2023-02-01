@@ -7,7 +7,8 @@ class TestPassage < ApplicationRecord
 
   before_validation :set_start_question, on: :create
 
-  scope :from_oldest_to_newest_by_test_id, ->(test_id) { where(test_id: test_id).order(created_at: :asc) }
+  scope :by_test_id, ->(test_id) { where(test_id: test_id) }
+  scope :from_oldest_to_newest_by_test_id, ->(test_id) { by_test_id(test_id).order(created_at: :asc) }
 
   def self.not_exists?(test_id)
     from_oldest_to_newest_by_test_id(test_id).empty?
