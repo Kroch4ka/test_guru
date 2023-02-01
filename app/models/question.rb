@@ -5,10 +5,10 @@ class Question < ApplicationRecord
   validates :body, presence: true
 
   def serial_number
-    test.questions.ids.each.with_index { |question_id, index| return index + 1 if question_id == id }
+    test.questions.find_index(self) + 1
   end
 
   def last?
-    serial_number == test.questions.ids.size
+    serial_number == test.questions.order(id: :asc).size
   end
 end

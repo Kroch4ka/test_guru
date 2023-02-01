@@ -3,7 +3,7 @@
     <div class="test_passage_card__passing_status">Вопрос <%= @test_passage.current_question.serial_number %> из <%= @test_passage.test.questions.size %></div>
     <div class="test_passage_card__question_body"><%= @test_passage.current_question.body %></div>
     <div class="test_passage_card__answers">
-      <%= form_with(url: answer_test_passage_path(@test_passage), method: :put, local: true, class: 'form', ) do |f|  %>
+      <%= form_with(url: test_passage_path(@test_passage), method: :put, local: true, class: 'form', ) do |f|  %>
         <%= f.collection_check_boxes(:answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false) do |ch| %>
           <div class="form__checkbox">
             <%= ch.check_box %>

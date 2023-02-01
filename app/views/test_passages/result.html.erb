@@ -11,9 +11,4 @@
       <p>Для сдачи нужно пройти: <%= @test_passage.minimum_questions_for_passing_test %></p>
     </div>
   <% end %>
-  <div class="retry_test_form">
-    <%= form_with(url: retry_test_passage_url(@test_passage), method: :post, local: true) do |form| %>
-      <%= form.submit 'Пройти тест заново!' %>
-    <% end %>
-  </div>
 </div>

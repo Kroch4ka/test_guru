@@ -1,5 +1,7 @@
 class TestPassage < ApplicationRecord
-  TEST_PASS_THRESHOLD_PERCENT = 85
+  TEST_PASS_THRESHOLD_PERCENT = 85.freeze
+
+  before_update :set_next_question
 
   belongs_to :user
   belongs_to :test
@@ -37,7 +39,7 @@ class TestPassage < ApplicationRecord
     result_in_percent >= TEST_PASS_THRESHOLD_PERCENT
   end
 
-  def minimum_questions_for_passing_test
+  def min_questions_for_passing_test
     (test.questions.size / TEST_PASS_THRESHOLD_PERCENT) * 100
   end
 

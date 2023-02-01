@@ -3,5 +3,5 @@
   <span class="test_card__level">Уровень: <%= levelize(test.level) %></span>
   <span class="test_card__count_questions">Количество вопросов: <%= test.questions.count %></span>
   <%= link_to 'Редактировать', test_url(test), class: "test_card__link link" %>
-  <%= link_to 'Начать', start_test_url(test), method: :post, class: "link" %>
+  <%= link_to_take_test(test) %>
 </li>

@@ -3,15 +3,14 @@ Rails.application.routes.draw do
   root to: 'tests#index'
 
   resources :tests do
-    post :start, on: :member
+    member do 
+      post :start
+      post :continue
+    end
     resources :questions, except: %i[index show], shallow: true
   end
 
-  resources :test_passages, only: %i[show] do
-    member do
-      get :result
-      put :answer
-      post :retry
-    end
+  resources :test_passages, only: %i[show update] do
+    get :result, on: :member
   end
 end
