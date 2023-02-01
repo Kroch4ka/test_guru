@@ -4,9 +4,16 @@ class TestPassagesController < ApplicationController
 
   def update
     answers = [*params[:answer_ids]]
-    @test_passage.save! if @test_passage.correct_answers?(answers)
+    service_params = {
+      answers: answers,
+      test_passage: @test_passage
+    }
 
-    update_question_redirect @test_passage
+    if TestPassageProgressService.call(service_params).success?
+      update_question_redirect(@test_passage)
+    else
+      redirect_to test_passage_url(@test_passage), alert: 'Something went wrong while trying to answer'
+    end
   end
 
   private

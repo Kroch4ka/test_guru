@@ -1,8 +1,6 @@
 class TestPassage < ApplicationRecord
   TEST_PASS_THRESHOLD_PERCENT = 85.freeze
 
-  before_update :set_next_question
-
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, class_name: :Question, optional: true
@@ -43,16 +41,11 @@ class TestPassage < ApplicationRecord
     (test.questions.size / TEST_PASS_THRESHOLD_PERCENT) * 100
   end
 
-  private
-
-  def set_next_question
-    self.current_question = next_question
-    self.count_correct_questions += 1
-  end
-
   def next_question
     test.questions.order(id: :asc).where("id > ?", current_question.id).last
   end
+
+  private
 
   def set_start_question
     self.current_question = test_questions.first
