@@ -38,15 +38,3 @@ second_question_third_answer = Answer.find_or_create_by(body: second_question_an
                                                         question_id: second_test_question.id)
 second_question_fourth_answer = Answer.find_or_create_by(body: second_question_answers.fourth,
                                                          question_id: second_test_question.id)
-
-first_user.tests << first_created_test
-second_user.tests << first_created_test
-third_user.tests << first_created_test
-
-first_user.answers << first_question_third_answer
-second_user.answers << first_question_fourth_answer
-third_user.answers << first_question_second_answer
-
-first_user.answers << second_question_first_answer
-second_user.answers << second_question_second_answer
-third_user.answers << second_question_fourth_answer
