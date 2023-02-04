@@ -1,0 +1,7 @@
+<div class="flash">
+  <% flash.each do |type, msg| %>
+    <div class="<%= type %> alert-info" bis_skin_checked="1">
+      <%= msg %>
+    </div>
+  <% end %>
+</div>

@@ -1,5 +1,4 @@
 class TestsController < ApplicationController
-  before_action :set_user, only: %i[start]
   before_action :set_test, only: %i[start show]
 
   def index
@@ -23,10 +22,6 @@ class TestsController < ApplicationController
   end
 
   private
-
-  def set_user
-    @user = User.all.order(id: :asc).first
-  end
 
   def set_test
     @test = Test.find(params[:id])

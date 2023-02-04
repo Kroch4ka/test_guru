@@ -16,6 +16,6 @@ class Answer < ApplicationRecord
   end
 
   def can_not_be_added_to_question?
-    MAX_ANSWERS_COUNT <= question.answers.size
+    MAX_ANSWERS_COUNT < question.answers.size
   end
 end

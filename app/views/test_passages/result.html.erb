@@ -8,7 +8,7 @@
     <div class="result_card__fail">
       <p>К сожалению, Вы не прошли данный тест</p>
       <p>Было пройдено: <%= @test_passage.count_correct_questions %> из <%= @test_passage.test.questions.size %></p>
-      <p>Для сдачи нужно пройти: <%= @test_passage.minimum_questions_for_passing_test %></p>
+      <p>Для сдачи нужно пройти: <%= @test_passage.min_questions_for_passing_test %></p>
     </div>
   <% end %>
 </div>

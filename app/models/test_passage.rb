@@ -10,20 +10,8 @@ class TestPassage < ApplicationRecord
   scope :by_test_id, ->(test_id) { where(test_id: test_id) }
   scope :from_oldest_to_newest_by_test_id, ->(test_id) { by_test_id(test_id).order(created_at: :asc) }
 
-  def self.not_exists?(test_id)
-    from_oldest_to_newest_by_test_id(test_id).empty?
-  end
-
   def self.newest_by_test_id(test_id)
     from_oldest_to_newest_by_test_id(test_id).last
-  end
-
-  def correct_answers?(answer_ids)
-    correct_answers.ids.sort == answer_ids.map(&:to_i).sort
-  end
-
-  def test_questions
-    test.questions.order(id: :asc)
   end
 
   def finished?
@@ -39,7 +27,11 @@ class TestPassage < ApplicationRecord
   end
 
   def min_questions_for_passing_test
-    (test.questions.size / TEST_PASS_THRESHOLD_PERCENT) * 100
+    ((test.questions.size * TEST_PASS_THRESHOLD_PERCENT).to_f / 100).ceil
+  end
+
+  def correct_answers?(answer_ids)
+    current_question.answers.correct.ids.sort == answer_ids.map(&:to_i).sort
   end
 
   def next_question
@@ -49,10 +41,6 @@ class TestPassage < ApplicationRecord
   private
 
   def set_start_question
-    self.current_question = test_questions.first
-  end
-
-  def correct_answers
-    current_question.answers.correct
+    self.current_question = test.questions.first
   end
 end

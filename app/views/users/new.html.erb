@@ -1,0 +1,12 @@
+<div class="sign_up">
+  <%= form_with model: @user, url: signup_path, local: true do |form| %>
+    <% if @user.errors.any? %>
+      <%= render 'shared/errors', resource: @user %>
+    <% end %>
+    <%= form.text_field :name %>
+    <%= form.text_field :email %>
+    <%= form.password_field :password %>
+    <%= form.password_field :password_confirmation %>
+    <%= form.submit %>
+  <% end %>
+</div>
