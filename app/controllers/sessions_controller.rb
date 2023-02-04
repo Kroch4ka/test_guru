@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
     if authenticate_interactor.success?
       session[:user_id] = authenticate_interactor.user_id
-      redirect_to root_path
+      redirect_to cookies[:destination_path]
     else
       redirect_to login_path, alert: authenticate_interactor.error
     end

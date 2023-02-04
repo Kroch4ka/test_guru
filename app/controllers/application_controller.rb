@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   def check_authentication
     unless current_user
+      cookies[:destination_path] = request.path
       redirect_to login_path
     end
   end
