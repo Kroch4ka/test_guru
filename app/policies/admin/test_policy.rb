@@ -6,8 +6,4 @@ class Admin::TestPolicy < ApplicationPolicy
     @user   = user
     @record = record
   end
-
-  def index?
-    user.is_a?(Admin)
-  end
 end
