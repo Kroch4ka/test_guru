@@ -1,7 +1,0 @@
-<li class="question">
-  <%= question.body %>
-  <div class="question__actions">
-      <%= link_to 'Изменить', edit_question_path(question), class: 'link' %>
-      <%= link_to 'Удалить', question_path(question), method: :delete, :data => {:confirm => 'Вы уверены?'}, class: 'link' %>
-  </div>
-</li>

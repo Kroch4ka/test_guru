@@ -1,0 +1,9 @@
+<h1><%= answer_form_heading(answer) %></h1>
+<%= form_with model: [question, answer], class: 'form', local: true do |form| %>
+  <% if answer.errors.any? %>
+    <%= render 'shared/errors', resource: answer %>
+  <% end %>
+  <%= form.label :body %>
+  <%= form.text_field :body %>
+  <%= form.submit %>
+<% end %>

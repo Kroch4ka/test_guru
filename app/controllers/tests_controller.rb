@@ -1,16 +1,13 @@
 class TestsController < ApplicationController
-  before_action :set_test, only: %i[start show]
+  before_action :authenticate_user!
 
   def index
     @tests = Test.all
   end
-
-  def show
-    @questions = @test.questions
-  end
   
   def start
-    test_passage = TestPassage.create(test_id: @test.id, user_id: @user.id)
+    test = Test.find(params[:id])
+    test_passage = TestPassage.create(test_id: test.id, user_id: current_user.id)
 
     redirect_to test_passage_url(test_passage)
   end
@@ -19,11 +16,5 @@ class TestsController < ApplicationController
     test_passage = TestPassage.from_oldest_to_newest_by_test_id(params[:id]).last
 
     redirect_to test_passage_url(test_passage)
-  end
-
-  private
-
-  def set_test
-    @test = Test.find(params[:id])
   end
 end

@@ -2,6 +2,6 @@
   <h1>Тест: <%= @test.title %></h1>
   <ul class="questions">
     <%= render @questions %>
-    <%= link_to 'Добавить', new_test_question_url(@test), class: 'link' %>
+    <%= link_to 'Добавить', new_admin_test_question_path(@test), class: 'link' %>
   </ul>
 </div>

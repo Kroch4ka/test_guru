@@ -8,12 +8,12 @@ module ApplicationHelper
   end
 
   def authenticate_links
-    if authenticated?
-      link_to 'Выйти', logout_path, method: :post, class: 'link'
+    if user_signed_in?
+      link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'link'
     else
       [
-        link_to('Зарегистрироваться', signup_path, class: 'link'),
-        link_to('Войти', login_path, class: 'link')
+        link_to('Зарегистрироваться', new_user_registration_path, class: 'link'),
+        link_to('Войти', new_user_session_path, class: 'link')
       ].join(' ').html_safe
     end
   end

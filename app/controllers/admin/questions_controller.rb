@@ -1,4 +1,4 @@
-class QuestionsController < ApplicationController
+class Admin::QuestionsController < Admin::AdminController
   before_action :get_test, only: %i[index create new]
   before_action :get_question, only: %i[edit show update destroy]
 

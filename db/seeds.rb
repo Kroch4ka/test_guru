@@ -1,8 +1,8 @@
 users = %w[Никита Алексей Дмитрий]
 
-first_user = User.find_or_create_by(name: users.first, email: 'nikita_example@mail.ru', password_digest: BCrypt::Password.create('123'))
-second_user = User.find_or_create_by(name: users.second, email: 'alex_example@mail.ru', password_digest: BCrypt::Password.create('123'))
-third_user = User.find_or_create_by(name: users.third, email: 'dmitry_example@mail.ru', password_digest: BCrypt::Password.create('123'))
+first_user = User.find_or_create_by(name: users.first, email: 'nikita_example@mail.ru', encrypted_password: BCrypt::Password.create('123'))
+second_user = User.find_or_create_by(name: users.second, email: 'alex_example@mail.ru', encrypted_password: BCrypt::Password.create('123'))
+third_user = User.find_or_create_by(name: users.third, email: 'dmitry_example@mail.ru', encrypted_password: BCrypt::Password.create('123'))
 
 categories = ['Языки программирования']
 

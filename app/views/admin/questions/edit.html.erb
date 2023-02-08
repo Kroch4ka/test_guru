@@ -1,0 +1,6 @@
+<div class="edit_question">
+  <%= render 'form', question: @question, test: @test %>
+  <h2>Список ответов</h2>
+  <%= render @question.answers %>
+  <%= link_to 'Добавить новый', edit_admin_question_path(@question) %>
+</div>
