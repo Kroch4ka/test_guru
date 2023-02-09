@@ -7,8 +7,7 @@ class Admin::AnswersController < Admin::AdminController
   end
 
   def create
-    @answer = Answer.new(answer_params)
-    @question.answers << @answer
+    @answer = @question.answers.build(answer_params)
 
     if @answer.persisted?
       redirect_to edit_question_path(@question)

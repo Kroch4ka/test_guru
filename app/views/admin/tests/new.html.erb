@@ -1,0 +1,12 @@
+<div>
+  Новый тест
+</div>
+<%= form_with model: [:admin, @test], class: 'form', local: true do |form| %>
+  <% if @test.errors.any? %>
+    <%= render 'shared/errors', resource: question %>
+  <% end %>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+  <%= form.collection_select(:category_id, Category.all, :id, :name, include_hidden: false) %>
+  <%= form.submit %>
+<% end %>
