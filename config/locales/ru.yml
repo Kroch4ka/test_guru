@@ -1,0 +1,37 @@
+ru:
+  activerecord:
+    models:
+      test: 'Тест'
+      question: 'Вопрос'
+    attributes:
+      test:
+        title: 'Название'
+        level: 'Уровень'
+  admin:
+    tests:
+      new:
+        title: 'Новый тест'
+  test:
+    level:
+      easy: 'Лёгкий'
+      medium: 'Средний'
+      hard: 'Тяжёлый'
+      undefined: 'Неопределённый'
+    actions:
+      start: 'Начать'
+      continue: 'Продолжить'
+      shown: 'Просмотреть'
+      destroy: 'Удалить'
+      create: 'Создать'
+  count: 'Количество'
+  from: 'из'
+  helpers:
+    select:
+      # Default value for :prompt => true in FormOptionsHelper
+      prompt: "Пожалуйста, выберите"
+
+    # Default translation keys for submit and button FormHelper
+    submit:
+      create: 'Создать %{model}'
+      update: 'Обновить %{model}'
+      submit: 'Сохранить %{model}'

@@ -1,6 +1,6 @@
 <li class="test_card">
-  <h2 class="test_card__title"><%= test.title %></h2>
-  <span class="test_card__level">Уровень: <%= levelize(test.level) %></span>
-  <span class="test_card__count_questions">Количество вопросов: <%= test.questions.count %></span>
+  <h2 class="test_card__title"><%= Test.human_attribute_name(:title) %>: <%= test.title %></h2>
+  <span class="test_card__level"><%= Test.human_attribute_name(:level) %>: <%= levelize(test.level) %></span>
+  <span class="test_card__count_questions"><%= t('count') %>: <%= test.questions.count %></span>
   <%= link_to_take_test(test) %>
 </li>

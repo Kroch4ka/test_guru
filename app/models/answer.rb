@@ -3,7 +3,9 @@ class Answer < ApplicationRecord
 
   belongs_to :question
 
-  validates :body, presence: true
+  translates :body
+
+  validates :body_ru, presence: true
   validate :check_for_added_to_question, on: :create
 
   scope :correct, -> { where(correct: true) }

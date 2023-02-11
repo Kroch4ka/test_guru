@@ -3,20 +3,23 @@ class Test < ApplicationRecord
   MEDIUM_LEVELS = 2..4
   HARD_LEVELS = 5..Float::INFINITY
 
+  translates :title
+
   has_many :users, through: :test_passages
   belongs_to :category
   has_many :questions, dependent: :destroy
   belongs_to :creator, foreign_key: :creator_id, class_name: :User
 
-  validates :title, presence: true, uniqueness: { scope: :level }
+  validates :title_ru, presence: true, uniqueness: { scope: %i[level title_en] }
   validates :level, numericality: { only_integer: true }
 
   scope :easy, -> { where(level: EASY_LEVELS) }
   scope :medium, -> { where(level: MEDIUM_LEVELS) }
   scope :hard, -> { where(level: HARD_LEVELS) }
-  scope :with_categories_by_name, ->(category_name) { joins(:category).where('categories.name LIKE ?', "%#{category_name}%") }
+  scope :with_categories_by_name, ->(category_name) { joins(:category).where('? LIKE ?', "categoires.#{Category.current_locale_column(:name)}", "%#{category_name}%") }
 
   def self.category_titles(category_name)
-    with_categories_by_name(category_name).order(title: :desc).pluck(:title)
+    title_column = current_locale_column(:title)
+    with_categories_by_name(category_name).order(title_column => :desc).pluck(title_column)
   end
 end

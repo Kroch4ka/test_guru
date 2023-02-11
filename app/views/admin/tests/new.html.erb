@@ -1,5 +1,5 @@
 <div>
-  Новый тест
+  <%= t('.title') %>
 </div>
 <%= form_with model: [:admin, @test], class: 'form', local: true do |form| %>
   <% if @test.errors.any? %>
@@ -7,6 +7,7 @@
   <% end %>
   <%= form.label :title %>
   <%= form.text_field :title %>
-  <%= form.collection_select(:category_id, Category.all, :id, :name, include_hidden: false) %>
+  <%= form.number_field :level, in: Test::EASY_LEVELS.min..Test::HARD_LEVELS.max %>
+  <%= form.collection_select(:category_id, Category.all, :id, :name, include_hidden: false, prompt: true) %>
   <%= form.submit %>
 <% end %>

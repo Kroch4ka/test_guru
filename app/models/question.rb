@@ -2,7 +2,9 @@ class Question < ApplicationRecord
   belongs_to :test
   has_many :answers, dependent: :destroy
 
-  validates :body, presence: true
+  translates :body
+
+  validates :body_ru, presence: true
 
   def serial_number
     test.questions.find_index(self) + 1

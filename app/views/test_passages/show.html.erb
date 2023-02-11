@@ -1,6 +1,6 @@
 <div class="test_passage_card">
   <div class="test_passage_card__progress"></div>
-    <div class="test_passage_card__passing_status">Вопрос <%= @test_passage.current_question.serial_number %> из <%= @test_passage.test.questions.size %></div>
+    <div class="test_passage_card__passing_status"><%= Question.model_name.human %>: <%= @test_passage.current_question.serial_number %> <%= t('from') %> <%= @test_passage.test.questions.size %></div>
     <div class="test_passage_card__question_body"><%= @test_passage.current_question.body %></div>
     <div class="test_passage_card__answers">
       <%= form_with(url: test_passage_path(@test_passage), method: :put, local: true, class: 'form', ) do |f|  %>
