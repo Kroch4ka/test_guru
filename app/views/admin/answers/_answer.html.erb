@@ -1,7 +1,9 @@
-<li class="answer">
-  <%= answer.body %>
-  <div class="answer__actions">
-    <%= link_to 'Изменить', edit_admin_answer_path(answer) %>
-    <%= link_to 'Удалить', admin_answer_path(answer), method: :delete, :data => {:confirm => 'Вы уверены?'} %>
+<li class="answer card">
+  <div class="card-content">
+    <div class="subtitle"><%= answer.body %></div>
+    <div>
+      <%= link_to 'Изменить', edit_admin_answer_path(answer), class: 'button is-link' %>
+      <%= link_to 'Удалить', admin_answer_path(answer), method: :delete, :data => {:confirm => 'Вы уверены?'}, class: 'button is-link' %>
+    </div>
   </div>
 </li>

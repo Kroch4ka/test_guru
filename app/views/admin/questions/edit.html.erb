@@ -1,6 +1,10 @@
-<div class="edit_question">
-  <%= render 'form', question: @question, test: @test %>
-  <h2>Список ответов</h2>
-  <%= render @question.answers %>
-  <%= link_to 'Добавить новый', edit_admin_question_path(@question) %>
+<div class="edit-question">
+  <%= render 'form', question: @question %>
+  <div class="answer-list">
+    <div class="subtitle">Варианты ответа</div>
+    <ul class="answers">
+      <%= render @question.answers %>
+    </ul>
+  </div>
+  <%= link_to 'Добавить новый вариант ответа', new_admin_question_answer_path(@question), class: 'button is-link' %>
 </div>

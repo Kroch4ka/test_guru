@@ -1,10 +1,10 @@
 class Question < ApplicationRecord
+  translates :body, :fallbacks_for_empty_translations => true
+
   belongs_to :test
   has_many :answers, dependent: :destroy
 
-  translates :body
-
-  validates :body_ru, presence: true
+  validates :body, presence: true
 
   def serial_number
     test.questions.find_index(self) + 1

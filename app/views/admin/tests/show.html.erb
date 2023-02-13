@@ -1,7 +1,6 @@
 <div class="test">
-  <h1><%= Test.human_attribute_name(:title) %>: <%= @test.title %></h1>
   <ul class="questions">
     <%= render @questions %>
-    <%= link_to t('test.actions.create'), new_admin_test_question_path(@test), class: 'link' %>
   </ul>
+  <%= link_to t('test.actions.create'), new_admin_test_question_path(@test), class: 'button is-link' %>
 </div>

@@ -1,12 +1,12 @@
 class Answer < ApplicationRecord
+  translates :body, :fallbacks_for_empty_translations => true
+
   MAX_ANSWERS_COUNT = 4
 
   belongs_to :question
 
-  translates :body
-
-  validates :body_ru, presence: true
   validate :check_for_added_to_question, on: :create
+  validates :body, presence: true
 
   scope :correct, -> { where(correct: true) }
 
@@ -17,6 +17,6 @@ class Answer < ApplicationRecord
   end
 
   def can_not_be_added_to_question?
-    MAX_ANSWERS_COUNT < question.answers.size + 1
+    MAX_ANSWERS_COUNT < question.answers.size
   end
 end

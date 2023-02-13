@@ -1,47 +1,32 @@
-// Place all the styles related to the Questions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 .questions {
-  max-width: 100%;
-  width: 100%;
-  list-style: none;
-  display: flex;
-  gap: 15px;
+  display: grid;
   flex-flow: column;
-  align-items: center;
-  margin-top: 15px;
+  grid-template-columns: auto auto auto;
+  gap: 30px;
+  margin-bottom: 20px;
 
-  li {
+  .actions {
     display: flex;
     justify-content: space-between;
-    flex-flow: row;
-    background: var(--accent-color);
-    padding: var(--padding-left-right);
-    color: rgba(14, 13, 13, 0.89);
-    border-radius: 10px;
-    transition: background-color ease-in 0.3s 0.1s;
-    gap: 40px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: rgba(25, 194, 194, 0.904);
-    }
-
-    .question__actions {
-      display: flex;
-      flex-flow: row;
-      gap: 15px;
-    }
-  }
-
-  > .link {
-    color: black;
+    gap: 10px;
   }
 }
 
-.create_question {
+.edit-question {
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+  align-items: center;
+
+  form {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+}
+
+.form {
   display: flex;
   flex-flow: column;
   align-items: center;
-  justify-content: center;
 }

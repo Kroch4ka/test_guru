@@ -12,9 +12,9 @@ module TestsHelper
     test_passage = TestPassage.from_oldest_to_newest_by_test_id(test.id).last
 
     if !test_passage || test_passage.finished?
-      link_to t('test.actions.start'), start_test_url(test), method: :post, class: "link"
+      link_to t('test.actions.start'), start_test_url(test), method: :post, class: "button is-link is-light"
     else
-      link_to t('test.actions.continue'), continue_test_url(test), method: :post, class: "link"
+      link_to t('test.actions.continue'), continue_test_url(test), method: :post, class: "button is-link is-light"
     end
   end
 end

@@ -1,7 +1,9 @@
 class Category < ApplicationRecord
-  default_scope { order(self.current_locale_column(:name) => :asc) }
+  translates :name, :fallbacks_for_empty_translations => true
 
-  translates :name
+  default_scope { order(name: :asc) }
+
+  validates :name, presence: true
 
   has_many :tests, dependent: :destroy
 end

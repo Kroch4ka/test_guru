@@ -9,11 +9,11 @@ categories = [{
                 en: 'Programming languages'
               }]
 
-created_category = Category.find_or_create_by(name_ru: categories.first[:ru], name_en: categories.first[:en])
+created_category = Category.find_or_create_by(name: categories.first[:ru])
 
 tests = ['Ruby']
 
-first_created_test = Test.find_or_create_by(title_ru: tests.first, category_id: created_category.id,
+first_created_test = Test.find_or_create_by(title: tests.first, category_id: created_category.id,
                                             creator_id: first_user.id)
 
 first_test_questions = [{
@@ -24,8 +24,8 @@ first_test_questions = [{
                           en: 'Who is the creator of Ruby?'
                         }]
 
-first_test_question = Question.find_or_create_by(body_ru: first_test_questions.first[:ru], body_en: first_test_questions.first[:en], test_id: first_created_test.id)
-second_test_question = Question.find_or_create_by(body_ru: first_test_questions.second[:ru], body_en: first_test_questions.second[:en] ,test_id: first_created_test.id)
+first_test_question = Question.find_or_create_by(body: first_test_questions.first[:ru], test_id: first_created_test.id)
+second_test_question = Question.find_or_create_by(body: first_test_questions.second[:ru] ,test_id: first_created_test.id)
 
 first_question_answers = [ {
                              ru: '2003',
@@ -53,25 +53,20 @@ second_question_answers = [{
                              en: 'Ryan Gosling'
                            }]
 
-first_question_first_answer = Answer.find_or_create_by(body_ru: first_question_answers.first[:ru],
+first_question_first_answer = Answer.find_or_create_by(body: first_question_answers.first[:ru],
                                                        question_id: first_test_question.id)
-first_question_second_answer = Answer.find_or_create_by(body_ru: first_question_answers.second[:ru],
-                                                        body_en: first_question_answers.second[:en],
+first_question_second_answer = Answer.find_or_create_by(body: first_question_answers.second[:ru],
                                                         question_id: first_test_question.id)
-first_question_third_answer = Answer.find_or_create_by(body_ru: first_question_answers.third[:ru],
+first_question_third_answer = Answer.find_or_create_by(body: first_question_answers.third[:ru],
                                                        question_id: first_test_question.id)
-first_question_fourth_answer = Answer.find_or_create_by(body_ru: first_question_answers.fourth[:ru],
+first_question_fourth_answer = Answer.find_or_create_by(body: first_question_answers.fourth[:ru],
                                                         question_id: first_test_question.id, correct: true)
 
-second_question_first_answer = Answer.find_or_create_by(body_ru: second_question_answers.first[:ru],
-                                                        body_en: second_question_answers.first[:en],
+second_question_first_answer = Answer.find_or_create_by(body: second_question_answers.first[:ru],
                                                         question_id: second_test_question.id)
-second_question_second_answer = Answer.find_or_create_by(body_ru: second_question_answers.second[:ru],
-                                                         body_en: second_question_answers.second[:en],
+second_question_second_answer = Answer.find_or_create_by(body: second_question_answers.second[:ru],
                                                          question_id: second_test_question.id, correct: true)
-second_question_third_answer = Answer.find_or_create_by(body_ru: second_question_answers.third[:ru],
-                                                        body_en: second_question_answers.second[:en],
+second_question_third_answer = Answer.find_or_create_by(body: second_question_answers.third[:ru],
                                                         question_id: second_test_question.id)
-second_question_fourth_answer = Answer.find_or_create_by(body_ru: second_question_answers.fourth[:ru],
-                                                         body_en: second_question_answers.fourth[:en],
+second_question_fourth_answer = Answer.find_or_create_by(body: second_question_answers.fourth[:ru],
                                                          question_id: second_test_question.id)

@@ -2,12 +2,44 @@
   <%= t('.title') %>
 </div>
 <%= form_with model: [:admin, @test], class: 'form', local: true do |form| %>
-  <% if @test.errors.any? %>
-    <%= render 'shared/errors', resource: question %>
-  <% end %>
-  <%= form.label :title %>
-  <%= form.text_field :title %>
-  <%= form.number_field :level, in: Test::EASY_LEVELS.min..Test::HARD_LEVELS.max %>
-  <%= form.collection_select(:category_id, Category.all, :id, :name, include_hidden: false, prompt: true) %>
-  <%= form.submit %>
+  <div class="field">
+    <%= form.label :title, class: 'label' %>
+    <div class="control">
+      <%= form.text_field :title, class: 'input' %>
+    </div>
+    <% if @test.errors[:title] %>
+      <% @test.errors[:title].each do |message| %>
+        <p class="help is-danger"><%= message %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= form.label :level, class: 'label' %>
+    <div class="control">
+      <%= form.number_field :level, in: Test::EASY_LEVELS.min..Test::HARD_LEVELS.max, class: 'input' %>
+    </div>
+    <% if @test.errors[:level] %>
+      <% @test.errors[:level].each do |message| %>
+        <p class="help is-danger"><%= message %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= form.label :category_id, class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= form.collection_select(:category_id, Category.all, :id, :name, include_hidden: false, prompt: true) %>
+      </div>
+      <% if @test.errors[:category] %>
+        <% @test.errors[:category].each do |message| %>
+          <p class="help is-danger"><%= message %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="control">
+      <%= form.submit class: 'button is-link' %>
+    </div>
+  </div>
 <% end %>

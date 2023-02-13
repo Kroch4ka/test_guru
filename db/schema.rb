@@ -10,31 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_11_141903) do
+ActiveRecord::Schema.define(version: 2023_02_13_143559) do
+
+  create_table "answer_translations", force: :cascade do |t|
+    t.integer "answer_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "body", null: false
+    t.index ["answer_id"], name: "index_answer_translations_on_answer_id"
+    t.index ["locale"], name: "index_answer_translations_on_locale"
+  end
 
   create_table "answers", force: :cascade do |t|
     t.integer "question_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "correct", default: false
-    t.text "body_ru", null: false
-    t.text "body_en"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name_ru", null: false
-    t.string "name_en"
+  end
+
+  create_table "category_translations", force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name", null: false
+    t.index ["category_id"], name: "index_category_translations_on_category_id"
+    t.index ["locale"], name: "index_category_translations_on_locale"
+  end
+
+  create_table "question_translations", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "body", null: false
+    t.index ["locale"], name: "index_question_translations_on_locale"
+    t.index ["question_id"], name: "index_question_translations_on_question_id"
   end
 
   create_table "questions", force: :cascade do |t|
     t.integer "test_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "body_ru", null: false
-    t.text "body_en"
     t.index ["test_id"], name: "index_questions_on_test_id"
   end
 
@@ -50,17 +74,24 @@ ActiveRecord::Schema.define(version: 2023_02_11_141903) do
     t.index ["user_id"], name: "index_test_passages_on_user_id"
   end
 
+  create_table "test_translations", force: :cascade do |t|
+    t.integer "test_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title", null: false
+    t.index ["locale"], name: "index_test_translations_on_locale"
+    t.index ["test_id"], name: "index_test_translations_on_test_id"
+  end
+
   create_table "tests", force: :cascade do |t|
     t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "level", default: 0
     t.integer "creator_id", null: false
-    t.string "title_ru", null: false
-    t.string "title_en"
     t.index ["category_id"], name: "index_tests_on_category_id"
     t.index ["creator_id"], name: "index_tests_on_creator_id"
-    t.index ["level", "title_ru", "title_en"], name: "index_tests_on_level_and_title_ru_and_title_en", unique: true
   end
 
   create_table "users", force: :cascade do |t|

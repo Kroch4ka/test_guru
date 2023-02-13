@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>TestGuru</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,15 +12,21 @@
 
   <body>
     <%= render 'shared/header' %>
-    <%= render 'shared/flash' %>
-    <% if user_signed_in? %>
-      <p>Приветствую, <%= current_user.name %>!!!</p>
-    <% end %>
-      <div class='container'>
-        <div class="container__wrapper">
-          <%= yield %>
+      <main>
+        <% if user_signed_in? %>
+          <article class="message greeting-message is-primary">
+            <div class="message-body">
+              Приветствую, <%= current_user.name %>
+            </div>
+          </article>
+        <% end %>
+        <div class='container'>
+          <div class="container-wrapper">
+            <%= render 'shared/flash' %>
+            <%= yield %>
+          </div>
         </div>
-      </div>
+      </main>
     <%= render 'shared/footer' %>
   </body>
 </html>

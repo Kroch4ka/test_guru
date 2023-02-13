@@ -1,9 +1,6 @@
 .header {
-  background-color: var(--accent-color);
-  padding: 15px var(--padding-left-right);
-
-  &__page {
-    color: whitesmoke;
-    font-weight: 600;
-  }
+  display: flex;
+  justify-content: space-between;
+  min-height: 150px;
+  align-items: center;
 }

@@ -1,7 +1,17 @@
-<li class="test_card">
-  <h2 class="test_card__title"><%= Test.human_attribute_name(:title) %>: <%= test.title %></h2>
-  <span class="test_card__level"><%= Test.human_attribute_name(:level) %>: <%= levelize(test.level) %></span>
-  <span class="test_card__count_questions"><%= t('count') %>: <%= test.questions.count %></span>
-  <%= link_to t('test.actions.shown'), admin_test_path(test), class: "test_card__link link" %>
-  <%= link_to t('test.actions.destroy'), admin_test_path(test), method: :delete, data: {confirm: "Are you sure?"}, class: "test_card__link link"  %>
+<li class="card">
+  <div class="card-content">
+    <h2 class="card-header-title"><%= Test.human_attribute_name(:title) %>: <%= test.title %></h2>
+    <div class="card-content">
+      <div class="columns">
+        <span><%= Test.human_attribute_name(:level) %>: <%= levelize(test.level) %></span>
+      </div>
+      <div class="columns">
+        <span><%= t('count') %>: <%= test.questions.count %></span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <%= link_to t('test.actions.shown'), admin_test_path(test), class: "button is-link is-light" %>
+      <%= link_to t('test.actions.destroy'), admin_test_path(test), method: :delete, data: {confirm: "Are you sure?"}, class: "button is-link is-light"  %>
+    </div>
+  </div>
 </li>

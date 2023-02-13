@@ -1,24 +1,19 @@
-// Place all the styles related to the TestPassages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.passage-card {
+  padding: 10px 80px;
+  .card-content {
+    display: flex;
+    gap: 25px;
+    flex-flow: column;
+  }
 
-.test_passage_card {
-  min-width: 800px;
-  min-height: 500px;
-  border: 1px solid rgba(0, 0, 0, .175);
-  border-radius: 10px;
-  padding: var(--padding-left-right);
-
-  &__answers {
+  form {
     display: flex;
     flex-flow: column;
+    gap: 25px;
+    .checkbox {
+      display: flex;
+      gap: 10px;
+    }
   }
 }
 
-.result_card__success {
-  color: green;
-}
-
-.result_card__fail {
-  color: red;
-}

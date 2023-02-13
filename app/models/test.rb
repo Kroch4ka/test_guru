@@ -1,17 +1,17 @@
 class Test < ApplicationRecord
+  translates :title, :fallbacks_for_empty_translations => true
+
   EASY_LEVELS = 0..1
   MEDIUM_LEVELS = 2..4
   HARD_LEVELS = 5..Float::INFINITY
-
-  translates :title
 
   has_many :users, through: :test_passages
   belongs_to :category
   has_many :questions, dependent: :destroy
   belongs_to :creator, foreign_key: :creator_id, class_name: :User
 
-  validates :title_ru, presence: true, uniqueness: { scope: %i[level title_en] }
   validates :level, numericality: { only_integer: true }
+  validates :title, presence: true
 
   scope :easy, -> { where(level: EASY_LEVELS) }
   scope :medium, -> { where(level: MEDIUM_LEVELS) }

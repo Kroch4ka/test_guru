@@ -2,11 +2,13 @@ ru:
   activerecord:
     models:
       test: 'Тест'
+      category: 'Категория'
       question: 'Вопрос'
     attributes:
       test:
         title: 'Название'
         level: 'Уровень'
+        category_id: 'Категория'
   admin:
     tests:
       new:
@@ -35,3 +37,4 @@ ru:
       create: 'Создать %{model}'
       update: 'Обновить %{model}'
       submit: 'Сохранить %{model}'
+      edit: 'Изменить %{model}'

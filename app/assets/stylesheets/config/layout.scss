@@ -1,42 +1,47 @@
-body, * > *, * {
-  font-family: var(--font);
-}
-
-a {
-  text-decoration: none;
-}
+@import "bulma/bulma";
 
 body {
   display: flex;
   flex-flow: column;
+  gap: 25px;
   justify-content: space-between;
 }
 
-.container {
+.logo {
+  background-image: url("logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  max-width: 150px;
+  width: 100%;
   height: 100%;
 }
 
-.container__wrapper {
-  min-height: 100%;
+.greeting-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+}
+
+.container-wrapper {
   display: flex;
-  justify-content: center;
+  flex-flow: column;
+  gap: 20px;
   align-items: center;
 }
 
-.link {
-  color: var(--link-color);
-  font-weight: 600;
-  text-decoration: underline 0.15em rgba(0, 0, 0, 0);
-  transition: text-decoration-color 400ms;
+.card-footer {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
 }
 
-.form {
+.card-footer > * {
+  margin-top: 5px;
+}
+
+main {
   display: flex;
   flex-flow: column;
-  gap: 15px;
-}
-
-ul, li {
-  margin: 0;
-  padding: 0;
+  position: relative;
 }

@@ -17,8 +17,4 @@ module ApplicationHelper
       ].join(' ').html_safe
     end
   end
-
-  def logo_link
-    link_to 'Test Guru', root_path
-  end
 end

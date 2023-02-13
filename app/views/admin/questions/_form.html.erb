@@ -1,9 +1,19 @@
-<h1><%= question_form_heading(question) %></h1>
-<%= form_with model: [:admin, test, question], class: 'form', local: true do |form| %>
-  <% if question.errors.any? %>
-    <%= render 'shared/errors', resource: question %>
+<div class="form">
+  <div class="subtitle"><%= question_form_heading(question) %></div>
+  <%= form_with model: [:admin, question], class: 'form', local: true do |form| %>
+    <div class="field">
+      <%= form.label :body, class: 'label' %>
+      <div class="control">
+        <%= form.text_field :body, class: 'input' %>
+        <% if question.errors[:body] %>
+          <% question.errors[:body].each do |message| %>
+            <p class="help is-danger"><%= message %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="control">
+      <%= form.submit class: 'button is-link' %>
+    </div>
   <% end %>
-  <%= form.label :body %>
-  <%= form.text_field :body %>
-  <%= form.submit %>
-<% end %>
+</div>

@@ -9,8 +9,8 @@ class Admin::AnswersController < Admin::AdminController
   def create
     @answer = @question.answers.build(answer_params)
 
-    if @answer.persisted?
-      redirect_to edit_question_path(@question)
+    if @answer.save
+      redirect_to edit_admin_question_path(@question)
     else
       render :new
     end
@@ -20,14 +20,14 @@ class Admin::AnswersController < Admin::AdminController
 
   def update
     if @answer.update(answer_params)
-      redirect_to edit_question_path(@answer.question)
+      redirect_to edit_admin_question_path(@answer.question)
     else
       render :edit
     end
   end
 
   def destroy
-    redirect_to edit_question_path(@answer.question) if @answer.destroy
+    redirect_to edit_admin_question_path(@answer.question) if @answer.destroy
   end
 
   private
