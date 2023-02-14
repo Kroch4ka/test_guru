@@ -1,14 +1,11 @@
-<div>
+<div class="result">
   <% if @test_passage.passed? %>
-    <div>
-      <p>Поздравляю! Вы прошли этот тест!</p>
-      <p>Было успешно пройдено: <%= @test_passage.count_correct_questions %> из <%= @test_passage.test.questions.size %></p>
+    <div class="success">
+      <%= t('.success_html', count_correct_questions: count_correct_questions(@test_passage)) %>
     </div>
   <% else %>
-    <div>
-      <p>К сожалению, Вы не прошли данный тест</p>
-      <p>Было пройдено: <%= @test_passage.count_correct_questions %> из <%= @test_passage.test.questions.size %></p>
-      <p>Для сдачи нужно пройти: <%= @test_passage.min_questions_for_passing_test %></p>
+    <div class="fail">
+      <%= t('.fail_html', count_correct_questions: count_correct_questions(@test_passage), count_questions_for_passing: @test_passage.min_questions_for_passing_test) %>
     </div>
   <% end %>
 </div>

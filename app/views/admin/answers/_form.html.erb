@@ -1,14 +1,10 @@
-<div class="subtitle"><%= answer_form_heading(answer) %></div>
+<%= form_heading(answer) %>
 <%= form_with model: [:admin, answer], url: url, class: 'form', local: true do |form| %>
   <div class="field">
     <%= form.label :body, class: 'label' %>
     <div class="control">
       <%= form.text_field :body, class: 'input' %>
-      <% if answer.errors[:body] %>
-        <% answer.errors[:body].each do |message| %>
-          <p class="help is-danger"><%= message %></p>
-        <% end %>
-      <% end %>
+      <%= form_error_field_prompt(answer, :body) %>
     </div>
   </div>
   <div class="field">

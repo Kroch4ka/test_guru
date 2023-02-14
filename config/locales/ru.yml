@@ -4,15 +4,39 @@ ru:
       test: 'Тест'
       category: 'Категория'
       question: 'Вопрос'
+      answer: 'Ответ'
     attributes:
       test:
         title: 'Название'
         level: 'Уровень'
         category_id: 'Категория'
+      answer:
+        body: 'Тело'
+      category:
+        name: 'Название'
+  shared:
+    nav:
+      admin: 'Админка'
+      test: 'Тесты'
   admin:
-    tests:
-      new:
-        title: 'Новый тест'
+    questions:
+      edit:
+        answer_variants: 'Варианты ответа'
+        add_answer: 'Добавить новый ответ'
+  test_passages:
+    gist:
+      alerts:
+        already_created: 'Вы уже создавали Gist для данного вопроса'
+        client_error: 'Что-то пошло не так. Проверьте правильность введёного API токена или интернет соединение.'
+        db_error: 'Что-то пошло не так при попытке создания Gist'
+      notice:
+        success_created: 'Успешно! Ваш Gist URL: %{gist_url}'
+    result:
+      success_html: "<p>Поздравляю! Вы прошли этот тест!</p><p>Было успешно пройдено: %{count_correct_questions}</p>"
+      fail_html: "<p>К сожалению, Вы не прошли данный тест</p><p>Было пройдено: %{count_correct_questions}</p><p>Для сдачи нужно пройти:%{count_questions_for_passing}</p>"
+  test_passage:
+    show:
+      answer: 'Ответить'
   test:
     level:
       easy: 'Лёгкий'
@@ -22,9 +46,6 @@ ru:
     actions:
       start: 'Начать'
       continue: 'Продолжить'
-      shown: 'Просмотреть'
-      destroy: 'Удалить'
-      create: 'Создать'
   count: 'Количество'
   from: 'из'
   helpers:
@@ -37,4 +58,10 @@ ru:
       create: 'Создать %{model}'
       update: 'Обновить %{model}'
       submit: 'Сохранить %{model}'
-      edit: 'Изменить %{model}'
+  greeting: 'Приветствую, %{name}'
+  crud:
+    show: 'Просмотреть'
+    destroy: 'Удалить'
+    create: 'Создать'
+    update: 'Обновить'
+    edit: 'Изменить'

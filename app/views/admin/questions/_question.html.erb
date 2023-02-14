@@ -2,8 +2,8 @@
   <div class="card-content">
     <div class="subtitle"><%= question.body %></div>
     <div class="is-grouped actions">
-      <%= link_to 'Изменить', edit_admin_question_path(question), class: 'button is-link' %>
-      <%= link_to 'Удалить',  admin_question_path(question), method: :delete, :data => {:confirm => 'Вы уверены?'}, class: 'button is-link' %>
+      <%= link_to t('crud.edit', model: ''), edit_admin_question_path(question), class: 'button is-link' %>
+      <%= link_to t('crud.destroy', model: ''),  admin_question_path(question), method: :delete, :data => {:confirm => 'Вы уверены?'}, class: 'button is-link' %>
     </div>
   </div>
 </li>

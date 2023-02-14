@@ -1,7 +1,5 @@
 <nav class="navigation">
-  <%= link_to 'Тесты', tests_path, class: 'link' %>
-  <% if user_signed_in? %>
-    <%= link_to 'Админка', admin_tests_path %>
-  <% end %>
+  <%= link_to t('.test'), tests_path, class: 'link' %>
+  <%= admin_links %>
   <%= authenticate_links %>
 </nav>

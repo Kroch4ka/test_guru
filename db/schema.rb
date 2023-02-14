@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_13_143559) do
+ActiveRecord::Schema.define(version: 2023_02_14_092007) do
 
   create_table "answer_translations", force: :cascade do |t|
     t.integer "answer_id", null: false
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 2023_02_13_143559) do
     t.string "name", null: false
     t.index ["category_id"], name: "index_category_translations_on_category_id"
     t.index ["locale"], name: "index_category_translations_on_locale"
+  end
+
+  create_table "gists", force: :cascade do |t|
+    t.integer "question_id"
+    t.string "gist_url"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_gists_on_question_id"
+    t.index ["user_id"], name: "index_gists_on_user_id"
   end
 
   create_table "question_translations", force: :cascade do |t|
@@ -105,6 +115,8 @@ ActiveRecord::Schema.define(version: 2023_02_13_143559) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "gists", "questions"
+  add_foreign_key "gists", "users"
   add_foreign_key "questions", "tests"
   add_foreign_key "test_passages", "questions", column: "current_question_id"
   add_foreign_key "test_passages", "tests"

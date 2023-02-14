@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   root to: 'tests#index'
 
   namespace :admin do
+    resources :gists, only: %i[index]
     resources :tests, except: %i[edit] do
-      resources :questions, except: %i[index show], shallow: true do
+      resources :questions, except: %i[index], shallow: true do
         resources :answers, except: %i[index show]
       end
     end
@@ -19,6 +20,9 @@ Rails.application.routes.draw do
   end
 
   resources :test_passages, only: %i[show update] do
-    get :result, on: :member
+    member do
+      get :result
+      post :gist
+    end
   end
 end

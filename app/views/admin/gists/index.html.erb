@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= Question.model_name.human %></th>
+      <th>Gist URL</th>
+      <th><%= User.model_name.human %></th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th><%= Question.model_name.human %></th>
+      <th>Gist URL</th>
+      <th><%= User.model_name.human %></th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <%= render @gists %>
+  </tbody>
+</table>

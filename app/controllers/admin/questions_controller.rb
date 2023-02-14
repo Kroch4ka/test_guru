@@ -1,12 +1,14 @@
 class Admin::QuestionsController < Admin::AdminController
-  before_action :get_test, only: %i[index create new]
-  before_action :get_question, only: %i[edit show update destroy]
+  before_action :set_test, only: %i[index create new]
+  before_action :set_question, only: %i[edit show update destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def new
     @question = @test.questions.build
   end
+
+  def show; end
 
   def update
     if @question.update(question_params)
@@ -32,11 +34,11 @@ class Admin::QuestionsController < Admin::AdminController
 
   private
 
-  def get_test
+  def set_test
     @test = Test.find(params[:test_id])
   end
 
-  def get_question
+  def set_question
     @question = Question.find(params[:id])
   end
 

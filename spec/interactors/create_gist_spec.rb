@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe AuthenticateUser, type: :interactor do
+RSpec.describe CreateGist, type: :interactor do
   describe '.call' do
     pending "add some examples to (or delete) #{__FILE__}"
   end

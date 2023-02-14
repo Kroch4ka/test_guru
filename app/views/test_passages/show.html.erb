@@ -2,16 +2,19 @@
     <div class="card-content">
       <progress class="progress is-primary" value="<%= @test_passage.result_in_percent %>" max="100"><%= @test_passage.result_in_percent %>>%</progress>
       <div><%= Question.model_name.human %>: <%= @test_passage.current_question.serial_number %> <%= t('from') %> <%= @test_passage.test.questions.size %></div>
-      <div><%= @test_passage.current_question.body %></div>
+      <div class="subtitle"><%= @test_passage.current_question.body %></div>
       <div>
         <%= form_with(url: test_passage_path(@test_passage), method: :put, local: true, class: 'form', ) do |f|  %>
           <%= f.collection_check_boxes(:answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false) do |ch| %>
-            <label class="checkbox">
+            <div class="field">
               <%= ch.check_box class: 'checkbox' %>
-              <%= ch.text %>
-            </label>
+              <%= ch.label %>
+            </div>
           <% end %>
-          <%= f.submit 'Ответить', class: 'button is-primary is-light' %>
+          <div class="controls">
+            <%= f.submit t('.answer'), class: 'button is-primary' %>
+            <%= gist_link(@test_passage.current_question) %>
+          </div>
         <% end %>
       </div>
     </div>

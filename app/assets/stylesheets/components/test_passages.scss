@@ -16,3 +16,24 @@
     }
   }
 }
+
+.card-content {
+  text-align: center;
+  font-size: 1.2rem;
+
+  .field {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+  }
+}
+
+.result {
+  .success {
+    color: green;
+  }
+
+  .fail {
+    color: red;
+  }
+}

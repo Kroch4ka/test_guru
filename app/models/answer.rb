@@ -1,5 +1,5 @@
 class Answer < ApplicationRecord
-  translates :body, :fallbacks_for_empty_translations => true
+  translates :body, fallbacks_for_empty_translations: true
 
   MAX_ANSWERS_COUNT = 4
 

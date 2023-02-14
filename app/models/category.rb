@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-  translates :name, :fallbacks_for_empty_translations => true
+  translates :name, fallbacks_for_empty_translations: true
 
   default_scope { order(name: :asc) }
 

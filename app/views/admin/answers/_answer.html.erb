@@ -2,8 +2,8 @@
   <div class="card-content">
     <div class="subtitle"><%= answer.body %></div>
     <div>
-      <%= link_to 'Изменить', edit_admin_answer_path(answer), class: 'button is-link' %>
-      <%= link_to 'Удалить', admin_answer_path(answer), method: :delete, :data => {:confirm => 'Вы уверены?'}, class: 'button is-link' %>
+      <%= link_to t('crud.edit'), edit_admin_answer_path(answer), class: 'button is-link' %>
+      <%= link_to t('crud.destroy'), admin_answer_path(answer), method: :delete, :data => {:confirm => 'Вы уверены?'}, class: 'button is-link' %>
     </div>
   </div>
 </li>

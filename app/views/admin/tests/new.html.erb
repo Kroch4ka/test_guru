@@ -1,28 +1,18 @@
-<div>
-  <%= t('.title') %>
-</div>
+<%= form_heading(@test) %>
 <%= form_with model: [:admin, @test], class: 'form', local: true do |form| %>
   <div class="field">
     <%= form.label :title, class: 'label' %>
     <div class="control">
       <%= form.text_field :title, class: 'input' %>
     </div>
-    <% if @test.errors[:title] %>
-      <% @test.errors[:title].each do |message| %>
-        <p class="help is-danger"><%= message %></p>
-      <% end %>
-    <% end %>
+    <%= form_error_field_prompt(@test, :title) %>
   </div>
   <div class="field">
     <%= form.label :level, class: 'label' %>
     <div class="control">
       <%= form.number_field :level, in: Test::EASY_LEVELS.min..Test::HARD_LEVELS.max, class: 'input' %>
     </div>
-    <% if @test.errors[:level] %>
-      <% @test.errors[:level].each do |message| %>
-        <p class="help is-danger"><%= message %></p>
-      <% end %>
-    <% end %>
+    <%= form_error_field_prompt(@test, :level) %>
   </div>
   <div class="field">
     <%= form.label :category_id, class: 'label' %>
@@ -30,11 +20,7 @@
       <div class="select">
         <%= form.collection_select(:category_id, Category.all, :id, :name, include_hidden: false, prompt: true) %>
       </div>
-      <% if @test.errors[:category] %>
-        <% @test.errors[:category].each do |message| %>
-          <p class="help is-danger"><%= message %></p>
-        <% end %>
-      <% end %>
+      <%= form_error_field_prompt(@test, :category_id) %>
     </div>
   </div>
   <div class="field">

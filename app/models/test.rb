@@ -1,5 +1,5 @@
 class Test < ApplicationRecord
-  translates :title, :fallbacks_for_empty_translations => true
+  translates :title, fallbacks_for_empty_translations: true
 
   EASY_LEVELS = 0..1
   MEDIUM_LEVELS = 2..4

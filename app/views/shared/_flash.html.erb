@@ -1,15 +1,5 @@
 <% if flash && !flash.empty? %>
 <div class="flash">
-  <% flash.each do |type, msg| %>
-    <% if type == 'alert' %>
-      <div class="notification is-danger" bis_skin_checked="1">
-        <%= msg %>
-      </div>
-    <% else %>
-      <div class="notification is-primary" bis_skin_checked="1">
-        <%= msg %>
-      </div>
-    <% end %>
-  <% end %>
+  <%= flash_by_type(flash) %>
 </div>
 <% end %>

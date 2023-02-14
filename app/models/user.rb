@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :test_passages
   has_many :tests, through: :test_passages
   has_many :created_tests, foreign_key: :creator_id, class_name: :Test
+  has_many :gists, dependent: :destroy
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
@@ -16,5 +17,9 @@ class User < ApplicationRecord
 
   def admin?
     is_a?(Admin)
+  end
+
+  def has_gist?(question)
+    !gists.where(question_id: question.id).empty?
   end
 end

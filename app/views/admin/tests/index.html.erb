@@ -1,4 +1,4 @@
 <ul class="tests">
   <%= render @tests %>
 </ul>
-<%= link_to 'Создать новый', new_admin_test_path, class: 'button is-link is-light' %>
+<%= link_to t('crud.create', model: Test.model_name.human), new_admin_test_path, class: 'button is-link is-light' %>
