@@ -21,7 +21,7 @@ class AlertPrompt {
         if (this._isEveryHidden()) {
             this.input.classList.remove('is-danger')
         }
-        this.alertNode.style.display = 'none';
+        this.alertNode.style.display = 'none'
     }
 
     hideAllPrompts() {
