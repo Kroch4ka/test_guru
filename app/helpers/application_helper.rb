@@ -1,12 +1,6 @@
 module ApplicationHelper
   def form_error_field_prompt(resource, field)
-    result = []
-    if resource.errors[field]
-      resource.errors[field].each do |message|
-        result << content_tag(:p, message, class: 'help is-danger')
-      end
-    end
-    result.join('\n').html_safe
+    resource.errors[field].map { |message| content_tag(:p, message, class: 'help is-danger') }.join.html_safe
   end
 
   def greet_user
@@ -20,15 +14,12 @@ module ApplicationHelper
   end
 
   def flash_by_type(flash)
-    result = []
-    flash.each do |type, message|
+    flash.map do |type, message|
       case type
-      when 'alert' then result << content_tag(:div, message, class: 'notification is-danger')
-      else result << content_tag(:div, message, class: 'notification is-primary')
+      when 'alert' then content_tag(:div, message, class: 'notification is-danger')
+      else content_tag(:div, message, class: 'notification is-primary')
       end
-    end
-
-    result.join('\n').html_safe
+    end.join.html_safe
   end
 
   def form_heading(resource_instance)
@@ -60,11 +51,6 @@ module ApplicationHelper
   end
 
   def admin_links
-    result = []
-    if user_signed_in?
-      result << link_to(t('.admin'), admin_tests_path)
-      result << link_to('Gists', admin_gists_path)
-    end
-    result.join.html_safe
+    ([] << link_to(t('.admin'), admin_tests_path) << link_to('Gists', admin_gists_path)).join.html_safe if user_signed_in?
   end
 end

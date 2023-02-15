@@ -24,7 +24,7 @@ class TestPassagesController < ApplicationController
     return redirect_to(test_passage_path(@test_passage), alert: t('.alerts.already_created')) if current_user.has_gist?(@test_passage.current_question)
 
     create_gist_interaction = CreateQuestionGist.call(question: @test_passage.current_question)
-    return redirect_to(test_passage_path(@test_passage), alert: t('.alerts.client_error')) if create_gist_interaction.failure?
+    return redirect_to(test_passage_path(@test_passage), alert: create_gist_interaction.error) if create_gist_interaction.failure?
 
     gist = create_gist_interaction.gist
     if Gist.create(question_id: @test_passage.current_question.id, user_id: current_user.id, gist_url: gist.html_url)
