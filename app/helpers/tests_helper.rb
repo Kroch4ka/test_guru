@@ -17,4 +17,16 @@ module TestsHelper
       link_to t('test.actions.continue'), continue_test_url(test), method: :post, class: "button is-link is-light"
     end
   end
+
+  def sort_select
+    order_options = {
+      t('tests.sort_types.title_asc') => 'title_asc',
+      t('tests.sort_types.title_desc') => 'title_desc'
+    }
+
+    label_tag('sort', t('sort')) +
+    content_tag(:div, class: 'select') do
+      select_tag('sort', options_for_select(order_options, params[:order]))
+    end
+  end
 end

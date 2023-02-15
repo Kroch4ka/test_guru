@@ -2,7 +2,13 @@ class TestsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tests = Test.all
+    sorting_interaction = SortTests.call(order: params[:order])
+    if sorting_interaction.failure?
+      flash.now[:alert] = t('general_error')
+      return render :index
+    end
+
+    @tests = sorting_interaction.tests
   end
   
   def start

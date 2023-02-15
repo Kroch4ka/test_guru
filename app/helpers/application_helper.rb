@@ -41,16 +41,24 @@ module ApplicationHelper
 
   def authenticate_links
     if user_signed_in?
-      link_to(t('users.shared.links.sign_out'), destroy_user_session_path, method: :delete, class: 'link')
+      [
+        link_to(t('.test'), tests_path, class: 'link'),
+        link_to(t('users.shared.links.sign_out'), destroy_user_session_path, method: :delete, class: 'link')
+      ].join.html_safe
     else
       [
         link_to(t('users.shared.links.sign_up'), new_user_registration_path, class: 'link'),
         link_to(t('users.shared.links.sign_in'), new_user_session_path, class: 'link')
-      ].join(' ').html_safe
+      ].join.html_safe
     end
   end
 
   def admin_links
-    ([] << link_to(t('.admin'), admin_tests_path) << link_to('Gists', admin_gists_path)).join.html_safe if user_signed_in?
+    if user_signed_in?
+      result = []
+      result << link_to(t('.admin'), admin_tests_path)
+      result << link_to('Gists', admin_gists_path)
+      result.join.html_safe
+    end
   end
 end

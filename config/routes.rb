@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tests, only: %i[index] do
+  resources :tests, only: %i[index], defaults: { order: 'title_asc' } do
     member do 
       post :start
       post :continue
