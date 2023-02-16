@@ -1,4 +1,4 @@
-const page = {
+module.exports = {
     isRegistration: () => {
         return window.location.href.match('sign_up')
     },
@@ -6,5 +6,3 @@ const page = {
         return window.location.pathname === '/'
     }
 }
-
-module.exports = page

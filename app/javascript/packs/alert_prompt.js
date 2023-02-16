@@ -8,6 +8,11 @@ class AlertPrompt {
         this._initialize()
     }
 
+    static hideAllInputPrompts(input) {
+        this.prompts[input]
+            ?.forEach(prompt => prompt.hide())
+    }
+
     show() {
         if (this._isEveryHidden()) {
             this.input.classList.add('is-danger')
@@ -22,11 +27,6 @@ class AlertPrompt {
             this.input.classList.remove('is-danger')
         }
         this.alertNode.style.display = 'none'
-    }
-
-    hideAllPrompts() {
-        AlertPrompt.prompts[this.input]
-            .forEach(prompt => prompt.hide())
     }
 
     _isEveryHidden() {
