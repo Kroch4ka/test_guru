@@ -45,15 +45,19 @@ document.addEventListener('DOMContentLoaded', () => {
             hideSuccessConfirmation()
             if (isConfirmed()) {
                 showSuccessConfirmation()
-            } else if (isNotFillConfirmationInput()) {
+                return
+            }
+            if (isNotFillConfirmationInput()) {
                 AlertPrompt.hideAllInputPrompts(confirmationInput)
-            } else if (isNotFillPasswordInput()) {
+                return
+            }
+            if (isNotFillPasswordInput()) {
                 notFillPasswordAlertPrompt.show()
                 notMatchAlertPrompt.hide()
-            } else {
-                notFillPasswordAlertPrompt.hide()
-                notMatchAlertPrompt.show()
+                return
             }
+            notFillPasswordAlertPrompt.hide()
+            notMatchAlertPrompt.show()
         }
 
         const passwordUpdateHandler = (e) => {

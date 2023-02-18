@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const pageManager = require('./page_manager')
 
-    if (pageManager.isRoot()) {
+    if (pageManager.isTests()) {
         const sortHandler = (e) => {
             const orderValue = e.target.value
             const searchParams = new URL(window.location.href).searchParams

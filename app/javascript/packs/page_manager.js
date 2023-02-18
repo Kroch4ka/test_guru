@@ -2,7 +2,7 @@ module.exports = {
     isRegistration: () => {
         return window.location.href.match('sign_up')
     },
-    isRoot: () => {
-        return window.location.pathname === '/'
+    isTests: () => {
+        return window.location.pathname === '/' && document.querySelector('#tests')
     }
 }
