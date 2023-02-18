@@ -28,7 +28,7 @@ class TestPassagesController < ApplicationController
 
     gist = create_gist_interaction.gist
     if Gist.create(question_id: @test_passage.current_question.id, user_id: current_user.id, gist_url: gist.html_url)
-      redirect_to test_passage_path(@test_passage), notice: t('.notice.success_created', gist_url: gist.html_url)
+      redirect_to test_passage_path(@test_passage), notice: t('.notice.success_created_html', gist_url: gist.html_url)
     else
       redirect_to test_passage_path(@test_passage), alert: t('.alerts.db_error')
     end

@@ -24,7 +24,7 @@ class Admin::QuestionsController < Admin::AdminController
     if question.save
       redirect_to @test
     else
-      redirect_to new_test_question_path(@test), alert: 'Упс, вопрос не был создан!'
+      redirect_to new_admin_test_question_path(@test), alert: 'Упс, вопрос не был создан!'
     end
   end
 

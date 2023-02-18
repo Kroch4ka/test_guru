@@ -1,6 +1,6 @@
 <div class="passage-card card">
     <div class="card-content">
-      <progress class="progress is-primary" value="<%= @test_passage.result_in_percent %>" max="100"><%= @test_passage.result_in_percent %>>%</progress>
+      <progress class="progress is-primary" value="<%= @test_passage.result_in_percent %>" max="100"><%= @test_passage.result_in_percent %></progress>
       <div><%= Question.model_name.human %>: <%= @test_passage.current_question.serial_number %> <%= t('from') %> <%= @test_passage.test.questions.size %></div>
       <div class="subtitle"><%= @test_passage.current_question.body %></div>
       <div>

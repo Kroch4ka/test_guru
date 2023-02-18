@@ -20,7 +20,7 @@
       <div class="select">
         <%= form.collection_select(:category_id, Category.all, :id, :name, include_hidden: false, prompt: true) %>
       </div>
-      <%= form_error_field_prompt(@test, :category_id) %>
+      <%= form_error_field_prompt(@test, :category) %>
     </div>
   </div>
   <div class="field">

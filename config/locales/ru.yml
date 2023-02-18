@@ -29,7 +29,7 @@ ru:
         already_created: 'Вы уже создавали Gist для данного вопроса'
         db_error: 'Что-то пошло не так при попытке создания Gist'
       notice:
-        success_created: 'Успешно! Ваш Gist URL: %{gist_url}'
+        success_created_html: 'Успешно! Ваш Gist URL: <a href="%{gist_url}">%{gist_url}</a>'
     result:
       success_html: "<p>Поздравляю! Вы прошли этот тест!</p><p>Было успешно пройдено: %{count_correct_questions}</p>"
       fail_html: "<p>К сожалению, Вы не прошли данный тест</p><p>Было пройдено: %{count_correct_questions}</p><p>Для сдачи нужно пройти:%{count_questions_for_passing}</p>"
