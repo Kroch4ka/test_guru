@@ -9,6 +9,7 @@ class Test < ApplicationRecord
   belongs_to :category
   has_many :questions, dependent: :destroy
   belongs_to :creator, foreign_key: :creator_id, class_name: :User
+  has_many :test_passages, dependent: :destroy
 
   validates :level, numericality: { only_integer: true }
   validates :title, presence: true

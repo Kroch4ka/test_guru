@@ -1,5 +1,11 @@
 ru:
   activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              should_be_between: "Длина устанавливаемого пароля должна быть между %{min_size} и %{max_size}"
     models:
       test: 'Тест'
       category: 'Категория'

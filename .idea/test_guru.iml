@@ -42,6 +42,7 @@
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.12.0, RVM: ruby-2.7.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_bot (v6.2.1, RVM: ruby-2.7.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_bot_rails (v6.2.0, RVM: ruby-2.7.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faker (v3.1.0, RVM: ruby-2.7.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday (v2.7.4, RVM: ruby-2.7.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday-net_http (v3.0.2, RVM: ruby-2.7.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.15.5, RVM: ruby-2.7.6) [gem]" level="application" />

@@ -1,72 +1,75 @@
-users = %w[Никита Алексей Дмитрий]
+Category.destroy_all
+User.destroy_all
 
-first_user = User.find_or_create_by(name: users.first, email: 'nikita_example@mail.ru', encrypted_password: BCrypt::Password.create('123'))
-second_user = User.find_or_create_by(name: users.second, email: 'alex_example@mail.ru', encrypted_password: BCrypt::Password.create('123'))
-third_user = User.find_or_create_by(name: users.third, email: 'dmitry_example@mail.ru', encrypted_password: BCrypt::Password.create('123'))
+user_attrs = {
+  default: {
+    name: Faker::Name.name,
+    email: FakerWrapper.email,
+    password: '12345'
+  },
+  admin: {
+    name: Faker::Name.name,
+    email: FakerWrapper.email,
+    password: '678910'
+  }
+}
 
-categories = [{
-                ru: 'Языки программирования',
-                en: 'Programming languages'
-              }]
+admin = FactoryBot.create(:admin, user_attrs[:default])
+user = FactoryBot.create(:user, user_attrs[:admin])
 
-created_category = Category.find_or_create_by(name: categories.first[:ru])
+questions = [
+  {
+    body: 'Национальное блюдо Франции',
+    answers: [
+      {
+        body: 'Эскарго',
+        valid: true
+      },
+      {
+        body: 'Энчилада',
+        valid: false
+      },
+      {
+        body: 'Борщ',
+        valid: false
+      }
+    ]
+  },
+  {
+    body: 'Национальное блюдо России',
+    answers: [
+      {
+        body: 'Щи',
+        valid: true
+      },
+      {
+        body: 'Пицца',
+        valid: false
+      },
+      {
+        body: 'Окрошка',
+        valid: true
+      }
+    ]
+  },
+]
 
-tests = ['Ruby']
+def generate_answers(question, answers)
+  answers.each do |answer|
+    FactoryBot.create(:answer, question: question, body: answer[:body])
+  end
+end
 
-first_created_test = Test.find_or_create_by(title: tests.first, category_id: created_category.id,
-                                            creator_id: first_user.id)
+def generate_questions(test, questions)
+  questions.each do |question|
+    FactoryBot.create(:question, body: question[:body], test: test) do |created_question|
+      generate_answers(created_question, question[:answers])
+    end
+  end
+end
 
-first_test_questions = [{
-                          ru: 'Когда появился Ruby?',
-                          en: 'When did Ruby appear?'
-                        }, {
-                          ru: 'Кто создатель Ruby?',
-                          en: 'Who is the creator of Ruby?'
-                        }]
-
-first_test_question = Question.find_or_create_by(body: first_test_questions.first[:ru], test_id: first_created_test.id)
-second_test_question = Question.find_or_create_by(body: first_test_questions.second[:ru] ,test_id: first_created_test.id)
-
-first_question_answers = [ {
-                             ru: '2003',
-                           }, {
-                             ru: 'хз',
-                             en: 'Dont known'
-                           },
-                           {
-                             ru: '2022'
-                           },
-                           {
-                             ru: '1995'
-                           }]
-second_question_answers = [{
-                             ru: 'Гвидо Ван Россум',
-                             en: 'Guido Van Rossum'
-                           }, {
-                             ru: 'ВЕЛИКИЙ МАТЦ',
-                             en: 'GREAT MATZ'
-                           }, {
-                             ru: 'Джеймс Гослинг',
-                             en: 'James Gosling'
-                           }, {
-                             ru: 'Райан Гослинг',
-                             en: 'Ryan Gosling'
-                           }]
-
-first_question_first_answer = Answer.find_or_create_by(body: first_question_answers.first[:ru],
-                                                       question_id: first_test_question.id)
-first_question_second_answer = Answer.find_or_create_by(body: first_question_answers.second[:ru],
-                                                        question_id: first_test_question.id)
-first_question_third_answer = Answer.find_or_create_by(body: first_question_answers.third[:ru],
-                                                       question_id: first_test_question.id)
-first_question_fourth_answer = Answer.find_or_create_by(body: first_question_answers.fourth[:ru],
-                                                        question_id: first_test_question.id, correct: true)
-
-second_question_first_answer = Answer.find_or_create_by(body: second_question_answers.first[:ru],
-                                                        question_id: second_test_question.id)
-second_question_second_answer = Answer.find_or_create_by(body: second_question_answers.second[:ru],
-                                                         question_id: second_test_question.id, correct: true)
-second_question_third_answer = Answer.find_or_create_by(body: second_question_answers.third[:ru],
-                                                        question_id: second_test_question.id)
-second_question_fourth_answer = Answer.find_or_create_by(body: second_question_answers.fourth[:ru],
-                                                         question_id: second_test_question.id)
+FactoryBot.create(:category) do |category|
+  FactoryBot.create(:test, creator: admin, category: category) do |test|
+    generate_questions(test, questions)
+  end
+end
