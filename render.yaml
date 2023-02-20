@@ -15,3 +15,4 @@ services:
           name: test_guru_prod
           property: connectionString
       - key: GIST_TOKEN
+        sync: false
