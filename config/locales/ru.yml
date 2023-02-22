@@ -29,6 +29,11 @@ ru:
       edit:
         answer_variants: 'Варианты ответа'
         add_answer: 'Добавить новый ответ'
+  feedback:
+    show:
+      email: 'Почта'
+      content: 'Сообщение'
+      send: 'Отправить'
   test_passages:
     gist:
       alerts:
@@ -79,5 +84,12 @@ ru:
         bad_request: 'Возникла внутренняя ошибка'
         too_many_requests: 'Проверьте, пожалуйста, правильность введёного токена.'
         something_went_wrong: 'Возникла внутренняя ошибка при создании Gist. Приносим извинения за предоставленные неудобства.'
+    send_feedback_email:
+      errors:
+        incorrect_email_or_email: 'Email и текст сообщения должны быть заполнены!'
   sort: 'Сортировка'
   general_error: 'Что-то пошло не так'
+  user_mailer:
+    feedback:
+      subject: 'Обратная связь'
+
