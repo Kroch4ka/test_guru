@@ -1,4 +1,10 @@
+<% if Test.have_some_for_start?(@tests) %>
 <%= sort_select %>
 <ul class="tests">
   <%= render @tests %>
 </ul>
+<% else %>
+   <div class="is-empty">
+     <%= t('.empty') %>
+   </div>
+<% end %>

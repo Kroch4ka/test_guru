@@ -18,6 +18,7 @@ ru:
         category_id: 'Категория'
       answer:
         body: 'Тело'
+        correct: 'Правильный'
       category:
         name: 'Название'
   shared:
@@ -50,6 +51,10 @@ ru:
     sort_types:
       title_asc: 'По названию. Лексикографический порядок по возрастанию'
       title_desc: 'По названию. Лексикографический порядок по убыванию'
+    index:
+      empty: 'На данный момент доступных тестов для прохождения нет!('
+    start:
+      error: 'Вы не можете начать этот тест!'
   test:
     level:
       easy: 'Лёгкий'
@@ -71,6 +76,7 @@ ru:
       create: 'Создать %{model}'
       update: 'Обновить %{model}'
       submit: 'Сохранить %{model}'
+      edit: 'Изменить %{model}'
   greeting: 'Приветствую, %{name}'
   crud:
     show: 'Просмотреть'
@@ -92,4 +98,6 @@ ru:
   user_mailer:
     feedback:
       subject: 'Обратная связь'
-
+  success: 'Успешно'
+  network:
+    404: '404! Не найдено!'

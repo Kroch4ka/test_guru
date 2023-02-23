@@ -4,7 +4,7 @@ class CreateQuestionGist
   def call
     github_client = context.client || Octokit::Client
     question = context.question
-    client = github_client.new(access_token: Rails.application.credentials[:gist_token])
+    client = github_client.new(access_token: ENV['GIST_TOKEN'])
     context.gist = client.create_gist(gist_params(question))
   rescue Octokit::BadRequest
     context.fail!(error: I18n.t('interactors.create_question_gist.errors.bad_request'))

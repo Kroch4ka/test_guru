@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class Admin::TestsController < Admin::AdminController
+  before_action :set_test, only: %i[show destroy]
 
   def index
     @tests = current_user.created_tests
@@ -17,7 +18,7 @@ class Admin::TestsController < Admin::AdminController
   def create
     @test = current_user.created_tests.build(test_params)
     if @test.save
-      redirect_to admin_tests_path, notice: 'Success!'
+      redirect_to admin_tests_path, notice: t('success')
     else
       render :new
     end
@@ -25,11 +26,17 @@ class Admin::TestsController < Admin::AdminController
 
   def edit; end
 
-  def destroy; end
+  def destroy
+    redirect_to admin_tests_path, notice: t('success') if @test.destroy!
+  end
 
   private
 
   def test_params
     params.require(:test).permit(:title, :level, :category_id)
+  end
+
+  def set_test
+    @test = Test.find(params[:id])
   end
 end

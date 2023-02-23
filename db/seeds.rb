@@ -23,15 +23,15 @@ questions = [
     answers: [
       {
         body: 'Эскарго',
-        valid: true
+        correct: true
       },
       {
         body: 'Энчилада',
-        valid: false
+        correct: false
       },
       {
         body: 'Борщ',
-        valid: false
+        correct: false
       }
     ]
   },
@@ -40,15 +40,15 @@ questions = [
     answers: [
       {
         body: 'Щи',
-        valid: true
+        correct: true
       },
       {
         body: 'Пицца',
-        valid: false
+        correct: false
       },
       {
         body: 'Окрошка',
-        valid: true
+        correct: true
       }
     ]
   },
@@ -56,7 +56,7 @@ questions = [
 
 def generate_answers(question, answers)
   answers.each do |answer|
-    FactoryBot.create(:answer, question: question, body: answer[:body])
+    FactoryBot.create(:answer, question: question, body: answer[:body], correct: answer[:correct])
   end
 end
 

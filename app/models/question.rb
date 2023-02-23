@@ -15,4 +15,8 @@ class Question < ApplicationRecord
   def last?
     serial_number == test.questions.order(id: :asc).size
   end
+
+  def has_answers?
+    !answers.empty?
+  end
 end

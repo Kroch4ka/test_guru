@@ -1,3 +1,4 @@
+<% if show_test?(test) %>
 <li class="card column">
   <div class="card-content">
     <h2 class="card-header-title"><%= Test.human_attribute_name(:title) %>: <%= test.title %></h2>
@@ -14,3 +15,4 @@
     </div>
   </div>
 </li>
+<% end %>

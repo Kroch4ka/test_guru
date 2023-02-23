@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_14_092007) do
+ActiveRecord::Schema.define(version: 2023_02_20_163015) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "answer_translations", force: :cascade do |t|
     t.integer "answer_id", null: false
@@ -27,6 +30,7 @@ ActiveRecord::Schema.define(version: 2023_02_14_092007) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "correct", default: false
+    t.index ["correct"], name: "index_answers_on_correct"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
@@ -102,6 +106,7 @@ ActiveRecord::Schema.define(version: 2023_02_14_092007) do
     t.integer "creator_id", null: false
     t.index ["category_id"], name: "index_tests_on_category_id"
     t.index ["creator_id"], name: "index_tests_on_creator_id"
+    t.index ["level"], name: "index_tests_on_level"
   end
 
   create_table "users", force: :cascade do |t|

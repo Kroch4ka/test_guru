@@ -29,4 +29,8 @@ module TestsHelper
       select_tag('sort', options_for_select(order_options, params[:order]))
     end
   end
+
+  def show_test?(test)
+    test.can_start?
+  end
 end
