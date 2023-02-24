@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Admin::TestsController < Admin::AdminController
-  before_action :set_test, only: %i[show destroy]
+  before_action :set_test, only: %i[show destroy publish unpublish]
 
   def index
     @tests = current_user.created_tests
@@ -26,6 +26,22 @@ class Admin::TestsController < Admin::AdminController
 
   def edit; end
 
+  def publish
+    if @test.update(publish: true)
+      redirect_to admin_tests_path, notice: t('success')
+    else
+      redirect_to admin_tests_path, notice: t('general_error')
+    end
+  end
+
+  def unpublish
+    if @test.update(publish: false)
+      redirect_to admin_tests_path, notice: t('success')
+    else
+      redirect_to admin_tests_path, notice: t('general_error')
+    end
+  end
+
   def destroy
     redirect_to admin_tests_path, notice: t('success') if @test.destroy!
   end
@@ -33,7 +49,7 @@ class Admin::TestsController < Admin::AdminController
   private
 
   def test_params
-    params.require(:test).permit(:title, :level, :category_id)
+    params.require(:test).permit(:title, :level, :publish, :category_id)
   end
 
   def set_test

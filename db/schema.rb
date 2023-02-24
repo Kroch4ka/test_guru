@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_20_163015) do
+ActiveRecord::Schema.define(version: 2023_02_24_213405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answer_translations", force: :cascade do |t|
-    t.integer "answer_id", null: false
+    t.bigint "answer_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2023_02_20_163015) do
   end
 
   create_table "answers", force: :cascade do |t|
-    t.integer "question_id"
+    t.bigint "question_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "correct", default: false
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2023_02_20_163015) do
   end
 
   create_table "category_translations", force: :cascade do |t|
-    t.integer "category_id", null: false
+    t.bigint "category_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(version: 2023_02_20_163015) do
   end
 
   create_table "gists", force: :cascade do |t|
-    t.integer "question_id"
+    t.bigint "question_id"
     t.string "gist_url"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_gists_on_question_id"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2023_02_20_163015) do
   end
 
   create_table "question_translations", force: :cascade do |t|
-    t.integer "question_id", null: false
+    t.bigint "question_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -70,16 +70,16 @@ ActiveRecord::Schema.define(version: 2023_02_20_163015) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.integer "test_id"
+    t.bigint "test_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["test_id"], name: "index_questions_on_test_id"
   end
 
   create_table "test_passages", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "test_id", null: false
-    t.integer "current_question_id"
+    t.bigint "user_id", null: false
+    t.bigint "test_id", null: false
+    t.bigint "current_question_id"
     t.integer "count_correct_questions", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2023_02_20_163015) do
   end
 
   create_table "test_translations", force: :cascade do |t|
-    t.integer "test_id", null: false
+    t.bigint "test_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -99,11 +99,12 @@ ActiveRecord::Schema.define(version: 2023_02_20_163015) do
   end
 
   create_table "tests", force: :cascade do |t|
-    t.integer "category_id"
+    t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "level", default: 0
-    t.integer "creator_id", null: false
+    t.bigint "creator_id", null: false
+    t.boolean "publish", default: false, null: false
     t.index ["category_id"], name: "index_tests_on_category_id"
     t.index ["creator_id"], name: "index_tests_on_creator_id"
     t.index ["level"], name: "index_tests_on_level"

@@ -16,6 +16,7 @@ ru:
         title: 'Название'
         level: 'Уровень'
         category_id: 'Категория'
+        publish: 'Опубликован'
       answer:
         body: 'Тело'
         correct: 'Правильный'
@@ -64,6 +65,8 @@ ru:
     actions:
       start: 'Начать'
       continue: 'Продолжить'
+      publish: 'Опубликовать'
+      unpublish: 'Снять с публикации'
   count: 'Количество'
   from: 'из'
   helpers:

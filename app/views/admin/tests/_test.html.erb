@@ -12,6 +12,7 @@
     <div class="card-footer">
       <%= link_to t('crud.show'), admin_test_path(test), class: "button is-link is-light" %>
       <%= link_to t('crud.destroy'), admin_test_path(test), method: :delete, data: {confirm: "Are you sure?"}, class: "button is-link is-light"  %>
+      <%= publish_link(test) %>
     </div>
   </div>
 </li>

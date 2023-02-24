@@ -13,12 +13,8 @@ class TestsController < ApplicationController
   
   def start
     test = Test.find(params[:id])
-    if test.can_start?
-      test_passage = TestPassage.create(test_id: test.id, user_id: current_user.id)
-      redirect_to test_passage_url(test_passage)
-    else
-      redirect_to root_path, alert: t('.error')
-    end
+    test_passage = TestPassage.create(test_id: test.id, user_id: current_user.id)
+    redirect_to test_passage_url(test_passage)
   end
 
   def continue

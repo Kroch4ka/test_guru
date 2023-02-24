@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :gists, only: %i[index]
     resources :tests, except: %i[edit] do
+      member do
+        post 'publish'
+        post 'unpublish'
+      end
       resources :questions, except: %i[index], shallow: true do
         resources :answers, except: %i[index show]
       end

@@ -45,3 +45,13 @@ main {
   flex-flow: column;
   position: relative;
 }
+
+.checkbox {
+  .control.is-flex {
+    gap: 10px;
+  }
+
+  .label {
+    margin-bottom: 0;
+  }
+}
