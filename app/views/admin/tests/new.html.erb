@@ -14,6 +14,13 @@
     </div>
     <%= form_error_field_prompt(@test, :level) %>
   </div>
+  <div class="field checkbox">
+    <div class="control is-flex">
+      <%= form.label :publish, class: 'label' %>
+      <%= form.check_box :publish, class: 'checkbox' %>
+    </div>
+    <%= form_error_field_prompt(@test, :level) %>
+  </div>
   <div class="field">
     <%= form.label :category_id, class: 'label' %>
     <div class="control">

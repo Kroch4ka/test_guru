@@ -1,2 +1,6 @@
 # frozen_string_literal: true
-Dotenv.load
+envs = %w[development test]
+
+if envs.include? Rails.env
+  Dotenv.load
+end

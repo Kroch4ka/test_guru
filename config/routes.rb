@@ -3,9 +3,15 @@ Rails.application.routes.draw do
 
   root to: 'tests#index'
 
+  resource :feedback, controller: :feedback, only: %i[show create]
+
   namespace :admin do
     resources :gists, only: %i[index]
     resources :tests, except: %i[edit] do
+      member do
+        post 'publish'
+        post 'unpublish'
+      end
       resources :questions, except: %i[index], shallow: true do
         resources :answers, except: %i[index show]
       end

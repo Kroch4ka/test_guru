@@ -9,6 +9,7 @@ class Test < ApplicationRecord
   belongs_to :category
   has_many :questions, dependent: :destroy
   belongs_to :creator, foreign_key: :creator_id, class_name: :User
+  has_many :test_passages, dependent: :destroy
 
   validates :level, numericality: { only_integer: true }
   validates :title, presence: true
@@ -17,9 +18,14 @@ class Test < ApplicationRecord
   scope :medium, -> { where(level: MEDIUM_LEVELS) }
   scope :hard, -> { where(level: HARD_LEVELS) }
   scope :with_categories_by_name, ->(category_name) { joins(:category).where('? LIKE ?', "categoires.#{Category.current_locale_column(:name)}", "%#{category_name}%") }
+  scope :published, -> { where(publish: true) }
 
   def self.category_titles(category_name)
     title_column = current_locale_column(:title)
     with_categories_by_name(category_name).order(title_column => :desc).pluck(title_column)
+  end
+
+  def published?
+    publish
   end
 end

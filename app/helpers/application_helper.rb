@@ -43,6 +43,7 @@ module ApplicationHelper
     if user_signed_in?
       [
         link_to(t('.test'), tests_path, class: 'link'),
+        link_to(t('user_mailer.feedback.subject'), feedback_path, class: 'link'),
         link_to(t('users.shared.links.sign_out'), destroy_user_session_path, method: :delete, class: 'link')
       ].join.html_safe
     else

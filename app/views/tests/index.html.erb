@@ -1,4 +1,10 @@
-<%= sort_select %>
-<ul class="tests">
-  <%= render @tests %>
-</ul>
+<% if Test.published.size > 0 %>
+  <%= sort_select %>
+  <ul class="tests">
+    <%= render @tests %>
+  </ul>
+<% else %>
+  <div id="is-empty">
+    <%= t('.empty') %>
+  </div>
+<% end %>

@@ -12,7 +12,7 @@ class Admin::QuestionsController < Admin::AdminController
 
   def update
     if @question.update(question_params)
-      redirect_to @question.test
+      redirect_to edit_admin_question_path(@question)
     else
       redirect_to :edit
     end
@@ -22,14 +22,14 @@ class Admin::QuestionsController < Admin::AdminController
     question = @test.questions.build(question_params)
 
     if question.save
-      redirect_to @test
+      redirect_to admin_test_path(@test)
     else
-      redirect_to new_admin_test_question_path(@test), alert: 'Упс, вопрос не был создан!'
+      redirect_to new_admin_test_question_path(@test), alert: t('general_error')
     end
   end
 
   def destroy
-    redirect_to @question.test if @question.destroy
+    redirect_to admin_test_path(@question.test), notice: t('success') if @question.destroy
   end
 
   private
@@ -47,6 +47,6 @@ class Admin::QuestionsController < Admin::AdminController
   end
 
   def record_not_found
-    render plain: '404 Не найдено!', status: :not_found
+    render plain: t('network.404'), status: :not_found
   end
 end

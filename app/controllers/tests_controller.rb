@@ -14,7 +14,6 @@ class TestsController < ApplicationController
   def start
     test = Test.find(params[:id])
     test_passage = TestPassage.create(test_id: test.id, user_id: current_user.id)
-
     redirect_to test_passage_url(test_passage)
   end
 

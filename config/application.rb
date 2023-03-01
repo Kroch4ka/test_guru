@@ -13,6 +13,8 @@ module TestGuru
     config.time_zone = 'Moscow'
     config.i18n.default_locale = :ru
     config.i18n.fallbacks = [I18n.default_locale]
+    config.factory_bot.definition_file_paths = ["factories"]
+    config.autoload_paths << Rails.root.join('lib')
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

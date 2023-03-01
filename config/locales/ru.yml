@@ -1,5 +1,11 @@
 ru:
   activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              should_be_between: "Длина устанавливаемого пароля должна быть между %{min_size} и %{max_size}"
     models:
       test: 'Тест'
       category: 'Категория'
@@ -10,8 +16,10 @@ ru:
         title: 'Название'
         level: 'Уровень'
         category_id: 'Категория'
+        publish: 'Опубликован'
       answer:
         body: 'Тело'
+        correct: 'Правильный'
       category:
         name: 'Название'
   shared:
@@ -23,6 +31,11 @@ ru:
       edit:
         answer_variants: 'Варианты ответа'
         add_answer: 'Добавить новый ответ'
+  feedback:
+    show:
+      email: 'Почта'
+      content: 'Сообщение'
+      send: 'Отправить'
   test_passages:
     gist:
       alerts:
@@ -39,6 +52,10 @@ ru:
     sort_types:
       title_asc: 'По названию. Лексикографический порядок по возрастанию'
       title_desc: 'По названию. Лексикографический порядок по убыванию'
+    index:
+      empty: 'На данный момент доступных тестов для прохождения нет!('
+    start:
+      error: 'Вы не можете начать этот тест!'
   test:
     level:
       easy: 'Лёгкий'
@@ -48,6 +65,8 @@ ru:
     actions:
       start: 'Начать'
       continue: 'Продолжить'
+      publish: 'Опубликовать'
+      unpublish: 'Снять с публикации'
   count: 'Количество'
   from: 'из'
   helpers:
@@ -60,6 +79,7 @@ ru:
       create: 'Создать %{model}'
       update: 'Обновить %{model}'
       submit: 'Сохранить %{model}'
+      edit: 'Изменить %{model}'
   greeting: 'Приветствую, %{name}'
   crud:
     show: 'Просмотреть'
@@ -73,5 +93,14 @@ ru:
         bad_request: 'Возникла внутренняя ошибка'
         too_many_requests: 'Проверьте, пожалуйста, правильность введёного токена.'
         something_went_wrong: 'Возникла внутренняя ошибка при создании Gist. Приносим извинения за предоставленные неудобства.'
+    send_feedback_email:
+      errors:
+        incorrect_email_or_email: 'Email и текст сообщения должны быть заполнены!'
   sort: 'Сортировка'
   general_error: 'Что-то пошло не так'
+  user_mailer:
+    feedback:
+      subject: 'Обратная связь'
+  success: 'Успешно'
+  network:
+    404: '404! Не найдено!'

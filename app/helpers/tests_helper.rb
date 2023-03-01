@@ -29,4 +29,12 @@ module TestsHelper
       select_tag('sort', options_for_select(order_options, params[:order]))
     end
   end
+
+  def publish_link(test)
+    if test.published?
+      link_to t('test.actions.unpublish'), unpublish_admin_test_path(test), method: :post, class: 'button is-link is-light'
+    else
+      link_to t('test.actions.publish'), publish_admin_test_path(test), method: :post, class: 'button is-link is-light'
+    end
+  end
 end

@@ -1,7 +1,9 @@
 class FeedbackController < ApplicationController
+  def show; end
+
   def create
     email = params[:email]
     content = params[:content]
-    FeedbackMailer.with(email: email, content: content).feedback.deliver_now
+    UserMailer.with(email: email, content: content).feedback.deliver_now
   end
 end
